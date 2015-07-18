@@ -10,13 +10,7 @@ use kartik\icons\Icon;
 /** @var bool $collapseOnSmallScreen */
 /** @var bool $useFontAwesome */
 /** @var \app\extensions\DefaultTheme\Module $theme */
-
-$mainCurrency = \app\modules\shop\models\Currency::getMainCurrency();
-if (is_null($order)) {
-    $itemsCount = 0;
-} else {
-    $itemsCount = $order->items_count;
-}
+$itemsCount = 0;
 
 $navStyles = '';
 

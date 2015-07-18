@@ -7,11 +7,11 @@ class m150424_143926_shop_module extends Migration
 {
     public function up()
     {
-        $this->insert('{{%configurable}}', [
-            'module' => 'shop',
-            'sort_order' => 4,
-            'section_name' => 'Shop',
-        ]);
+//        $this->insert('{{%configurable}}', [
+//            'module' => 'shop',
+//            'sort_order' => 4,
+//            'section_name' => 'Shop',
+//        ]);
     }
 
     public function down()

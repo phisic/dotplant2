@@ -8,18 +8,18 @@ class m150531_134103_theme_part_improvements extends Migration
     public function up()
     {
         $this->addColumn('{{%theme_active_widgets}}', 'configuration_json', Schema::TYPE_TEXT);
-        $this->insert(
-            '{{%theme_widgets}}',
-            [
-                'name' => Yii::t('app', 'Categories list'),
-                'widget' => 'app\extensions\DefaultTheme\widgets\CategoriesList\Widget',
-                'configuration_model' => 'app\extensions\DefaultTheme\widgets\CategoriesList\ConfigurationModel',
-                'configuration_view' => '@app/extensions/DefaultTheme/widgets/CategoriesList/views/_config.php',
-                'configuration_json' => '{}',
-                'is_cacheable' => 0,
-                'cache_tags' => \app\modules\shop\models\Category::className(),
-            ]
-        );
+//        $this->insert(
+//            '{{%theme_widgets}}',
+//            [
+//                'name' => Yii::t('app', 'Categories list'),
+//                'widget' => 'app\extensions\DefaultTheme\widgets\CategoriesList\Widget',
+//                'configuration_model' => 'app\extensions\DefaultTheme\widgets\CategoriesList\ConfigurationModel',
+//                'configuration_view' => '@app/extensions/DefaultTheme/widgets/CategoriesList/views/_config.php',
+//                'configuration_json' => '{}',
+//                'is_cacheable' => 0,
+//                'cache_tags' => \app\modules\shop\models\Category::className(),
+//            ]
+//        );
         $categoriesListWidgetId = $this->db->lastInsertID;
 
         $this->insert(

@@ -7,10 +7,10 @@ class m150604_065422_backend_menu_changes extends Migration
 {
     public function up()
     {
-        $this->update(\app\backend\models\BackendMenu::tableName(),
-            ['route' => 'shop/backend-yml/settings'],
-            ['route' => 'backend/yml/settings']
-        );
+//        $this->update(\app\backend\models\BackendMenu::tableName(),
+//            ['route' => 'shop/backend-yml/settings'],
+//            ['route' => 'backend/yml/settings']
+//        );
 
         $this->update(\app\backend\models\BackendMenu::tableName(),
             ['route' => 'backend/config/index'],

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\shop\models;
+namespace app\components;
 
 use app;
 use Yii;
@@ -30,15 +30,6 @@ class UserPreferences extends Model {
     public function rules()
     {
         return [
-            [['productListingSortId'], 'integer'],
-
-            ['productListingSortId', 'default', 'value' => 1,],
-            [
-                'productListingSortId',
-                'in',
-                'range' => array_keys(ProductListingSort::enabledSorts())
-            ],
-
             ['listViewType', 'default', 'value' => 'blockView'],
             [
                 'listViewType',
@@ -53,7 +44,7 @@ class UserPreferences extends Model {
             [
                 'productsPerPage',
                 'default',
-                'value' => Yii::$app->getModule('shop')->productsPerPage,
+                'value' => 25,
             ],
             [
                 'productsPerPage',

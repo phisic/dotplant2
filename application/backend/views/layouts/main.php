@@ -188,18 +188,7 @@ Icon::map($this);
         ]
     )
     ?>
-    <div class="control-group">
-        <label class="control-label" for="delete-action"><?= Yii::t('app', 'Product deleting rules') ?></label>
-        <div>
-            <?=
-            Html::dropDownList(
-                'delete_mode',
-                \app\modules\shop\models\Category::DELETE_MODE_SINGLE_CATEGORY,
-                \app\modules\shop\models\Category::deleteModesList(), ['class' => 'form-control', 'id' => 'delete-mode']
-            )
-            ?>
-        </div>
-    </div>
+    
     <?php \yii\bootstrap\Modal::end() ?>
     <div style="z-index: 99999" class="modal fade" id="newStaticValue"  role="dialog"  aria-hidden="true">
         <div class="modal-dialog">

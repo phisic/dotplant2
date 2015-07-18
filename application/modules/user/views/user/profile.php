@@ -32,8 +32,8 @@ $form = ActiveForm::begin([
 <div class="row">
     <div class="col-md-6 col-sm-12">
         <h1 class="h2"><?= $this->title ?></h1>
-        <?= $form->field($model, 'first_name') ?>
-        <?= $form->field($model, 'last_name') ?>
+        <?= $form->field($model, 'name') ?>
+        <?=$form->field($model, 'offname')?>
         <?= $form->field($model, 'email') ?>
         <div class="form-group">
             <?=

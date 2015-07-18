@@ -340,45 +340,45 @@ class m150531_084444_new_init extends Migration
             ],
             $tableOptions
         );
-        $this->createTable(
-            Product::tableName(),
-            [
-                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
-                'main_category_id' => 'INT UNSIGNED NOT NULL',
-                'parent_id' => 'INT UNSIGNED DEFAULT \'0\'',
-                'option_generate' => 'TEXT DEFAULT NULL',
-                'name' => 'VARCHAR(255) NOT NULL',
-                'title' => 'VARCHAR(255) DEFAULT NULL',
-                'h1' => 'VARCHAR(255) DEFAULT NULL',
-                'meta_description' => 'VARCHAR(255) DEFAULT NULL',
-                'breadcrumbs_label' => 'VARCHAR(255) DEFAULT NULL',
-                'slug' => 'VARCHAR(80) DEFAULT \'\'',
-                'slug_compiled' => 'VARCHAR(180) DEFAULT \'\'',
-                'slug_absolute' => 'TINYINT DEFAULT \'0\'',
-                'content' => 'TEXT DEFAULT NULL',
-                'announce' => 'TEXT DEFAULT NULL',
-                'sort_order' => 'INT DEFAULT \'0\'',
-                'active' => 'TINYINT DEFAULT \'1\'',
-                'price' => 'FLOAT UNSIGNED DEFAULT \'0\'',
-                'old_price' => 'FLOAT UNSIGNED DEFAULT \'0\'',
-                'sku' => 'VARCHAR(70) NOT NULL DEFAULT \'\'',
-                'unlimited_count' => 'TINYINT NOT NULL DEFAULT \'1\'',
-                'currency_id' => 'INT UNSIGNED NOT NULL DEFAULT \'1\'',
-                'measure_id' => 'INT UNSIGNED NOT NULL',
-                'KEY `ix-product-active-slug` (`active`, `slug`)',
-                'KEY `ix-product-parent_id` (`parent_id`)',
-                'KEY `sku` (`sku`)',
-                'KEY `parent_active` (`parent_id`,`active`)',
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            '{{%product_property}}',
-            [
-                'object_model_id' => 'INT UNSIGNED NOT NULL PRIMARY KEY',
-            ],
-            $tableOptions
-        );
+//        $this->createTable(
+//            Product::tableName(),
+//            [
+//                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
+//                'main_category_id' => 'INT UNSIGNED NOT NULL',
+//                'parent_id' => 'INT UNSIGNED DEFAULT \'0\'',
+//                'option_generate' => 'TEXT DEFAULT NULL',
+//                'name' => 'VARCHAR(255) NOT NULL',
+//                'title' => 'VARCHAR(255) DEFAULT NULL',
+//                'h1' => 'VARCHAR(255) DEFAULT NULL',
+//                'meta_description' => 'VARCHAR(255) DEFAULT NULL',
+//                'breadcrumbs_label' => 'VARCHAR(255) DEFAULT NULL',
+//                'slug' => 'VARCHAR(80) DEFAULT \'\'',
+//                'slug_compiled' => 'VARCHAR(180) DEFAULT \'\'',
+//                'slug_absolute' => 'TINYINT DEFAULT \'0\'',
+//                'content' => 'TEXT DEFAULT NULL',
+//                'announce' => 'TEXT DEFAULT NULL',
+//                'sort_order' => 'INT DEFAULT \'0\'',
+//                'active' => 'TINYINT DEFAULT \'1\'',
+//                'price' => 'FLOAT UNSIGNED DEFAULT \'0\'',
+//                'old_price' => 'FLOAT UNSIGNED DEFAULT \'0\'',
+//                'sku' => 'VARCHAR(70) NOT NULL DEFAULT \'\'',
+//                'unlimited_count' => 'TINYINT NOT NULL DEFAULT \'1\'',
+//                'currency_id' => 'INT UNSIGNED NOT NULL DEFAULT \'1\'',
+//                'measure_id' => 'INT UNSIGNED NOT NULL',
+//                'KEY `ix-product-active-slug` (`active`, `slug`)',
+//                'KEY `ix-product-parent_id` (`parent_id`)',
+//                'KEY `sku` (`sku`)',
+//                'KEY `parent_active` (`parent_id`,`active`)',
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            '{{%product_property}}',
+//            [
+//                'object_model_id' => 'INT UNSIGNED NOT NULL PRIMARY KEY',
+//            ],
+//            $tableOptions
+//        );
         $this->createTable(
             Layout::tableName(),
             [
@@ -468,80 +468,80 @@ class m150531_084444_new_init extends Migration
             ],
             $tableOptions
         );
-        $this->createTable(
-            CategoryGroup::tableName(),
-            [
-                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
-                'name' => 'VARCHAR(255) NOT NULL',
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            Category::tableName(),
-            [
-                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
-                'category_group_id' => 'INT UNSIGNED NOT NULL',
-                'parent_id' => 'INT UNSIGNED NOT NULL',
-                'name' => 'VARCHAR(255) NOT NULL',
-                'title' => 'VARCHAR(255) NOT NULL',
-                'h1' => 'VARCHAR(255) NOT NULL',
-                'meta_description' => 'VARCHAR(255) DEFAULT NULL',
-                'breadcrumbs_label' => 'VARCHAR(255) DEFAULT NULL',
-                'slug' => 'VARCHAR(80) DEFAULT \'\'',
-                'slug_compiled' => 'VARCHAR(180) DEFAULT \'\'',
-                'slug_absolute' => 'TINYINT DEFAULT \'0\'',
-                'content' => 'TEXT DEFAULT NULL',
-                'announce' => 'TEXT DEFAULT NULL',
-                'sort_order' => 'INT DEFAULT \'0\'',
-                'title_append' => 'VARCHAR(255) DEFAULT NULL',
-                'active' => 'TINYINT UNSIGNED DEFAULT \'1\'',
-                'KEY `ix-category-category_group_id` (`category_group_id`, `parent_id`)',
-                'KEY `ix-category-parent_id` (`parent_id`)',
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            '{{%category_eav}}',
-            [
-                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
-                'object_model_id' => 'INT UNSIGNED NOT NULL',
-                'property_group_id' => 'INT UNSIGNED NOT NULL',
-                'key' => 'VARCHAR(255) NOT NULL',
-                'value' => 'TEXT DEFAULT NULL',
-                'sort_order' => 'INT DEFAULT \'0\'',
-                'KEY `object_model_id` (`object_model_id`)',
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            '{{%property_category}}',
-            [
-                'object_model_id' => 'INT UNSIGNED NOT NULL PRIMARY KEY',
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            '{{%product_category}}',
-            [
-                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
-                'category_id' => 'INT UNSIGNED NOT NULL',
-                'object_model_id' => 'INT UNSIGNED NOT NULL',
-                'sort_order' => 'INT DEFAULT \'0\'',
-                'KEY `cat_omid` (`category_id`,`object_model_id`)',
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            CategoryGroupRouteTemplates::tableName(),
-            [
-                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
-                'category_group_id' => 'int(11) unsigned NOT NULL',
-                'route_id' => 'INT UNSIGNED NOT NULL',
-                'template_json' => 'TEXT NOT NULL',
-                'KEY `ix-category-group-route-templates-category_group_id-route_id` (`category_group_id`, `route_id`)',
-            ],
-            $tableOptions
-        );
+//        $this->createTable(
+//            CategoryGroup::tableName(),
+//            [
+//                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
+//                'name' => 'VARCHAR(255) NOT NULL',
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            Category::tableName(),
+//            [
+//                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
+//                'category_group_id' => 'INT UNSIGNED NOT NULL',
+//                'parent_id' => 'INT UNSIGNED NOT NULL',
+//                'name' => 'VARCHAR(255) NOT NULL',
+//                'title' => 'VARCHAR(255) NOT NULL',
+//                'h1' => 'VARCHAR(255) NOT NULL',
+//                'meta_description' => 'VARCHAR(255) DEFAULT NULL',
+//                'breadcrumbs_label' => 'VARCHAR(255) DEFAULT NULL',
+//                'slug' => 'VARCHAR(80) DEFAULT \'\'',
+//                'slug_compiled' => 'VARCHAR(180) DEFAULT \'\'',
+//                'slug_absolute' => 'TINYINT DEFAULT \'0\'',
+//                'content' => 'TEXT DEFAULT NULL',
+//                'announce' => 'TEXT DEFAULT NULL',
+//                'sort_order' => 'INT DEFAULT \'0\'',
+//                'title_append' => 'VARCHAR(255) DEFAULT NULL',
+//                'active' => 'TINYINT UNSIGNED DEFAULT \'1\'',
+//                'KEY `ix-category-category_group_id` (`category_group_id`, `parent_id`)',
+//                'KEY `ix-category-parent_id` (`parent_id`)',
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            '{{%category_eav}}',
+//            [
+//                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
+//                'object_model_id' => 'INT UNSIGNED NOT NULL',
+//                'property_group_id' => 'INT UNSIGNED NOT NULL',
+//                'key' => 'VARCHAR(255) NOT NULL',
+//                'value' => 'TEXT DEFAULT NULL',
+//                'sort_order' => 'INT DEFAULT \'0\'',
+//                'KEY `object_model_id` (`object_model_id`)',
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            '{{%property_category}}',
+//            [
+//                'object_model_id' => 'INT UNSIGNED NOT NULL PRIMARY KEY',
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            '{{%product_category}}',
+//            [
+//                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
+//                'category_id' => 'INT UNSIGNED NOT NULL',
+//                'object_model_id' => 'INT UNSIGNED NOT NULL',
+//                'sort_order' => 'INT DEFAULT \'0\'',
+//                'KEY `cat_omid` (`category_id`,`object_model_id`)',
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            CategoryGroupRouteTemplates::tableName(),
+//            [
+//                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
+//                'category_group_id' => 'int(11) unsigned NOT NULL',
+//                'route_id' => 'INT UNSIGNED NOT NULL',
+//                'template_json' => 'TEXT NOT NULL',
+//                'KEY `ix-category-group-route-templates-category_group_id-route_id` (`category_group_id`, `route_id`)',
+//            ],
+//            $tableOptions
+//        );
         $this->createTable(
             SubscribeEmail::tableName(),
             [
@@ -553,144 +553,142 @@ class m150531_084444_new_init extends Migration
             ],
             $tableOptions
         );
+//        $this->createTable(
+//            Order::tableName(),
+//            [
+//                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
+//                'user_id' => 'INT UNSIGNED NOT NULL',
+//                'manager_id' => 'INT UNSIGNED DEFAULT \'0\'',
+//                'start_date' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP',
+//                'update_date' => 'TIMESTAMP NULL',
+//                'end_date' => "TIMESTAMP NULL",
+//                'cart_forming_time' => 'INT DEFAULT \'0\'',
+//                'order_stage_id' => 'INT UNSIGNED NOT NULL',
+//                'payment_type_id' => 'INT UNSIGNED DEFAULT \'0\'',
+//                'assigned_id' => 'INT UNSIGNED DEFAULT NULL',
+//                'tax_id' => 'INT UNSIGNED DEFAULT NULL',
+//                'external_id' => 'VARCHAR(38) DEFAULT NULL',
+//                'items_count' => 'FLOAT UNSIGNED DEFAULT NULL',
+//                'total_price' => 'FLOAT DEFAULT \'0\'',
+//                'total_payed' => 'FLOAT DEFAULT \'0\'',
+//                'hash' => 'CHAR(32) NOT NULL',
+//                'is_deleted' => 'TINYINT UNSIGNED DEFAULT 0',
+//                'temporary' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 1',
+//                'show_price_changed_notification' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 0',
+//                'customer_id' => 'INT UNSIGNED NOT NULL DEFAULT 0',
+//                'contragent_id' => 'INT UNSIGNED NOT NULL DEFAULT 0',
+//                'in_cart' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0',
+//                'KEY `ix-order-user_id` (`user_id`)',
+//                'KEY `ix-order-manager_id` (`manager_id`)',
+//                'UNIQUE KEY `uq-order-hash` (`hash`)',
+//            ],
+//            $tableOptions
+//        );
+//        // @todo Set all float fields as unsigned
+//        $this->createTable(
+//            OrderItem::tableName(),
+//            [
+//                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
+//                'parent_id' => 'INT UNSIGNED NOT NULL DEFAULT 0',
+//                'order_id' => 'INT UNSIGNED DEFAULT \'0\'',
+//                'product_id' => 'INT UNSIGNED NOT NULL',
+//                'custom_name' => 'VARCHAR(255)',
+//                'quantity' => 'FLOAT NOT NULL DEFAULT \'1\'',
+//                'price_per_pcs' => 'FLOAT NOT NULL DEFAULT \'0\'',
+//                'total_price_without_discount' => 'FLOAT NOT NULL DEFAULT \'0\'',
+//                'lock_product_price' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 0',
+//                'discount_amount' => 'FLOAT NOT NULL DEFAULT \'0\'',
+//                'total_price' => 'FLOAT NOT NULL DEFAULT \'0\'',
+//                'KEY `ix-order_item-order_id` (`order_id`)',
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            OrderTransaction::tableName(),
+//            [
+//                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
+//                'order_id' => 'INT UNSIGNED NOT NULL',
+//                'payment_type_id' => 'INT UNSIGNED NOT NULL',
+//                'start_date' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP',
+//                'end_date' => 'TIMESTAMP NULL',
+//                'status' => 'TINYINT UNSIGNED NOT NULL',
+//                'total_sum' => 'DECIMAL(10, 2) NOT NULL',
+//                'params' => 'TEXT',
+//                'result_data' => 'TEXT',
+//                'KEY `ix-order_transaction-order_id` (`order_id`)'
+//            ],
+//            $tableOptions
+//        );
         $this->createTable(
-            Order::tableName(),
-            [
-                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
-                'user_id' => 'INT UNSIGNED NOT NULL',
-                'manager_id' => 'INT UNSIGNED DEFAULT \'0\'',
-                'start_date' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP',
-                'update_date' => 'TIMESTAMP NULL',
-                'end_date' => "TIMESTAMP NULL",
-                'cart_forming_time' => 'INT DEFAULT \'0\'',
-                'order_stage_id' => 'INT UNSIGNED NOT NULL',
-                'payment_type_id' => 'INT UNSIGNED DEFAULT \'0\'',
-                'assigned_id' => 'INT UNSIGNED DEFAULT NULL',
-                'tax_id' => 'INT UNSIGNED DEFAULT NULL',
-                'external_id' => 'VARCHAR(38) DEFAULT NULL',
-                'items_count' => 'FLOAT UNSIGNED DEFAULT NULL',
-                'total_price' => 'FLOAT DEFAULT \'0\'',
-                'total_payed' => 'FLOAT DEFAULT \'0\'',
-                'hash' => 'CHAR(32) NOT NULL',
-                'is_deleted' => 'TINYINT UNSIGNED DEFAULT 0',
-                'temporary' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 1',
-                'show_price_changed_notification' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 0',
-                'customer_id' => 'INT UNSIGNED NOT NULL DEFAULT 0',
-                'contragent_id' => 'INT UNSIGNED NOT NULL DEFAULT 0',
-                'in_cart' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0',
-                'KEY `ix-order-user_id` (`user_id`)',
-                'KEY `ix-order-manager_id` (`manager_id`)',
-                'UNIQUE KEY `uq-order-hash` (`hash`)',
-            ],
-            $tableOptions
+                OrderChat::tableName(), [
+            'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
+            'order_id' => 'INTEGER UNSIGNED NOT NULL',
+            'user_id' => 'INTEGER UNSIGNED NOT NULL',
+            'date' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP',
+            'message' => 'TEXT DEFAULT NULL',
+            'KEY `ix-order_chat-order_id` (`order_id`)',
+                ], $tableOptions
         );
-        // @todo Set all float fields as unsigned
-        $this->createTable(
-            OrderItem::tableName(),
-            [
-                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
-                'parent_id' => 'INT UNSIGNED NOT NULL DEFAULT 0',
-                'order_id' => 'INT UNSIGNED DEFAULT \'0\'',
-                'product_id' => 'INT UNSIGNED NOT NULL',
-                'custom_name' => 'VARCHAR(255)',
-                'quantity' => 'FLOAT NOT NULL DEFAULT \'1\'',
-                'price_per_pcs' => 'FLOAT NOT NULL DEFAULT \'0\'',
-                'total_price_without_discount' => 'FLOAT NOT NULL DEFAULT \'0\'',
-                'lock_product_price' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 0',
-                'discount_amount' => 'FLOAT NOT NULL DEFAULT \'0\'',
-                'total_price' => 'FLOAT NOT NULL DEFAULT \'0\'',
-                'KEY `ix-order_item-order_id` (`order_id`)',
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            OrderTransaction::tableName(),
-            [
-                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
-                'order_id' => 'INT UNSIGNED NOT NULL',
-                'payment_type_id' => 'INT UNSIGNED NOT NULL',
-                'start_date' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP',
-                'end_date' => 'TIMESTAMP NULL',
-                'status' => 'TINYINT UNSIGNED NOT NULL',
-                'total_sum' => 'DECIMAL(10, 2) NOT NULL',
-                'params' => 'TEXT',
-                'result_data' => 'TEXT',
-                'KEY `ix-order_transaction-order_id` (`order_id`)'
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            OrderChat::tableName(),
-            [
-                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
-                'order_id' => 'INTEGER UNSIGNED NOT NULL',
-                'user_id' => 'INTEGER UNSIGNED NOT NULL',
-                'date' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP',
-                'message' => 'TEXT DEFAULT NULL',
-                'KEY `ix-order_chat-order_id` (`order_id`)',
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            ShippingOption::tableName(),
-            [
-                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
-                'name' => 'VARCHAR(255) NOT NULL',
-                'description' => 'VARCHAR(255) NOT NULL',
-                'price_from' => 'FLOAT DEFAULT 0',
-                'price_to' => 'FLOAT DEFAULT 0',
-                'cost' => 'FLOAT DEFAULT 0',
-                'sort' => 'INT DEFAULT \'0\'',
-                'active' => 'TINYINT DEFAULT \'0\'',
-                'KEY `ix-shipping_option-active` (`active`)',
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            PaymentType::tableName(),
-            [
-                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
-                'name' => 'VARCHAR(255) NOT NULL',
-                'class' => 'VARCHAR(255) NOT NULL',
-                'params' => 'TEXT DEFAULT NULL',
-                'logo' => 'VARCHAR(255) DEFAULT NULL',
-                'commission' => 'FLOAT DEFAULT \'0\'',
-                'active' => 'TINYINT DEFAULT \'0\'',
-                'payment_available' => 'TINYINT DEFAULT \'1\'',
-                'sort' => 'TINYINT DEFAULT \'1\'',
-                'KEY `ix-payment_type-active` (`active`)',
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            '{{%order_property}}',
-            [
-                'object_model_id' => 'INTEGER UNSIGNED NOT NULL PRIMARY KEY',
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            '{{%order_eav}}',
-            [
-                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
-                'object_model_id' => 'INTEGER UNSIGNED NOT NULL',
-                'property_group_id' => 'INT UNSIGNED NOT NULL',
-                'key' => 'VARCHAR(255) NOT NULL',
-                'value' => 'TEXT DEFAULT NULL',
-                'sort_order' => 'INTEGER DEFAULT \'0\'',
-                'KEY `object_model_id` (`object_model_id`)',
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            '{{%order_category}}',
-            [
-                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
-                'category_id' => 'INTEGER UNSIGNED NOT NULL',
-                'object_model_id' => 'INTEGER UNSIGNED NOT NULL',
-            ],
-            $tableOptions
-        );
+//        $this->createTable(
+//            ShippingOption::tableName(),
+//            [
+//                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
+//                'name' => 'VARCHAR(255) NOT NULL',
+//                'description' => 'VARCHAR(255) NOT NULL',
+//                'price_from' => 'FLOAT DEFAULT 0',
+//                'price_to' => 'FLOAT DEFAULT 0',
+//                'cost' => 'FLOAT DEFAULT 0',
+//                'sort' => 'INT DEFAULT \'0\'',
+//                'active' => 'TINYINT DEFAULT \'0\'',
+//                'KEY `ix-shipping_option-active` (`active`)',
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            PaymentType::tableName(),
+//            [
+//                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
+//                'name' => 'VARCHAR(255) NOT NULL',
+//                'class' => 'VARCHAR(255) NOT NULL',
+//                'params' => 'TEXT DEFAULT NULL',
+//                'logo' => 'VARCHAR(255) DEFAULT NULL',
+//                'commission' => 'FLOAT DEFAULT \'0\'',
+//                'active' => 'TINYINT DEFAULT \'0\'',
+//                'payment_available' => 'TINYINT DEFAULT \'1\'',
+//                'sort' => 'TINYINT DEFAULT \'1\'',
+//                'KEY `ix-payment_type-active` (`active`)',
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            '{{%order_property}}',
+//            [
+//                'object_model_id' => 'INTEGER UNSIGNED NOT NULL PRIMARY KEY',
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            '{{%order_eav}}',
+//            [
+//                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
+//                'object_model_id' => 'INTEGER UNSIGNED NOT NULL',
+//                'property_group_id' => 'INT UNSIGNED NOT NULL',
+//                'key' => 'VARCHAR(255) NOT NULL',
+//                'value' => 'TEXT DEFAULT NULL',
+//                'sort_order' => 'INTEGER DEFAULT \'0\'',
+//                'KEY `object_model_id` (`object_model_id`)',
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            '{{%order_category}}',
+//            [
+//                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
+//                'category_id' => 'INTEGER UNSIGNED NOT NULL',
+//                'object_model_id' => 'INTEGER UNSIGNED NOT NULL',
+//            ],
+//            $tableOptions
+//        );
         $this->createTable(
             Form::tableName(),
             [
@@ -1049,18 +1047,18 @@ class m150531_084444_new_init extends Migration
             ],
             $tableOptions
         );
-        $this->createTable(
-            ProductListingSort::tableName(),
-            [
-                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
-                'name' => 'VARCHAR(255) NOT NULL',
-                'sort_field' => 'VARCHAR(255) NOT NULL',
-                'asc_desc' => 'ENUM(\'asc\',\'desc\') NOT NULL DEFAULT \'asc\'',
-                'enabled' => Schema::TYPE_SMALLINT.' NOT NULL DEFAULT 1',
-                'sort_order' => 'INT UNSIGNED DEFAULT 0',
-            ],
-            $tableOptions
-        );
+//        $this->createTable(
+//            ProductListingSort::tableName(),
+//            [
+//                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
+//                'name' => 'VARCHAR(255) NOT NULL',
+//                'sort_field' => 'VARCHAR(255) NOT NULL',
+//                'asc_desc' => 'ENUM(\'asc\',\'desc\') NOT NULL DEFAULT \'asc\'',
+//                'enabled' => Schema::TYPE_SMALLINT.' NOT NULL DEFAULT 1',
+//                'sort_order' => 'INT UNSIGNED DEFAULT 0',
+//            ],
+//            $tableOptions
+//        );
         $this->createTable(
             SliderHandler::tableName(),
             [
@@ -1103,15 +1101,15 @@ class m150531_084444_new_init extends Migration
             ],
             $tableOptions
         );
-        $this->createTable(
-            RelatedProduct::tableName(),
-            [
-                'product_id' => 'INT UNSIGNED NOT NULL',
-                'related_product_id' => 'INT UNSIGNED NOT NULL',
-                'PRIMARY KEY (`product_id`, `related_product_id`)',
-            ],
-            $tableOptions
-        );
+//        $this->createTable(
+//            RelatedProduct::tableName(),
+//            [
+//                'product_id' => 'INT UNSIGNED NOT NULL',
+//                'related_product_id' => 'INT UNSIGNED NOT NULL',
+//                'PRIMARY KEY (`product_id`, `related_product_id`)',
+//            ],
+//            $tableOptions
+//        );
         $this->createTable(
             '{{%dynagrid}}',
             [
@@ -1132,107 +1130,107 @@ class m150531_084444_new_init extends Migration
                 'UNIQUE `uniq_dtl` (`name`, `category`, `dynagrid_id`)',
             ]
         );
-        $this->createTable(
-            CurrencyRateProvider::tableName(),
-            [
-                'id' => Schema::TYPE_PK,
-                'name' => Schema::TYPE_STRING,
-                'class_name' => Schema::TYPE_STRING,
-                'params' => Schema::TYPE_TEXT,
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            Currency::tableName(),
-            [
-                'id' => Schema::TYPE_PK,
-                'name' => Schema::TYPE_STRING,
-                'iso_code' => Schema::TYPE_STRING,
-                'is_main' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0',
-                'convert_nominal' => Schema::TYPE_FLOAT . ' NOT NULL DEFAULT 1',
-                'convert_rate' => Schema::TYPE_FLOAT . ' NOT NULL DEFAULT 1',
-                'sort_order' => Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
-                'intl_formatting' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 1',
-                'min_fraction_digits' => Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
-                'max_fraction_digits' => Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 2',
-                'dec_point' => Schema::TYPE_STRING . ' NOT NULL DEFAULT \'.\'',
-                'thousands_sep' => Schema::TYPE_STRING . ' NOT NULL DEFAULT \' \'',
-                'format_string' => Schema::TYPE_STRING,
-                'additional_rate' => Schema::TYPE_FLOAT . ' NOT NULL DEFAULT 0',
-                'additional_nominal' => Schema::TYPE_FLOAT . ' NOT NULL DEFAULT 0',
-                'currency_rate_provider_id' => Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
-            ],
-            $tableOptions
-        );
+//        $this->createTable(
+//            CurrencyRateProvider::tableName(),
+//            [
+//                'id' => Schema::TYPE_PK,
+//                'name' => Schema::TYPE_STRING,
+//                'class_name' => Schema::TYPE_STRING,
+//                'params' => Schema::TYPE_TEXT,
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            Currency::tableName(),
+//            [
+//                'id' => Schema::TYPE_PK,
+//                'name' => Schema::TYPE_STRING,
+//                'iso_code' => Schema::TYPE_STRING,
+//                'is_main' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0',
+//                'convert_nominal' => Schema::TYPE_FLOAT . ' NOT NULL DEFAULT 1',
+//                'convert_rate' => Schema::TYPE_FLOAT . ' NOT NULL DEFAULT 1',
+//                'sort_order' => Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
+//                'intl_formatting' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 1',
+//                'min_fraction_digits' => Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
+//                'max_fraction_digits' => Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 2',
+//                'dec_point' => Schema::TYPE_STRING . ' NOT NULL DEFAULT \'.\'',
+//                'thousands_sep' => Schema::TYPE_STRING . ' NOT NULL DEFAULT \' \'',
+//                'format_string' => Schema::TYPE_STRING,
+//                'additional_rate' => Schema::TYPE_FLOAT . ' NOT NULL DEFAULT 0',
+//                'additional_nominal' => Schema::TYPE_FLOAT . ' NOT NULL DEFAULT 0',
+//                'currency_rate_provider_id' => Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
+//            ],
+//            $tableOptions
+//        );
         //
-        $this->createTable(
-            Warehouse::tableName(),
-            [
-                'id' => Schema::TYPE_PK,
-                'name' => Schema::TYPE_STRING,
-                'is_active' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 1',
-                'country_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-                'city_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-                'address' => Schema::TYPE_TEXT,
-                'description' => Schema::TYPE_TEXT,
-                'sort_order' =>  Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
-                'map_latitude' => Schema::TYPE_STRING . ' NOT NULL DEFAULT \'\'',
-                'map_longitude' => Schema::TYPE_STRING . ' NOT NULL DEFAULT \'\'',
-                'shipping_center' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 1',
-                'issuing_center' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 1',
-                'xml_id' => Schema::TYPE_STRING . ' NOT NULL DEFAULT \'\'',
-                'KEY `wh_country` (`country_id`)',
-                'KEY `wh_city` (`city_id`)',
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            WarehousePhone::tableName(),
-            [
-                'id' => Schema::TYPE_PK,
-                'warehouse_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-                'sort_order' =>  Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
-                'phone' => Schema::TYPE_STRING . ' NOT NULL',
-                'name' => Schema::TYPE_STRING,
-                'KEY `wh_phone` (`warehouse_id`)',
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            WarehouseEmail::tableName(),
-            [
-                'id' => Schema::TYPE_PK,
-                'warehouse_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-                'sort_order' =>  Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
-                'email' => Schema::TYPE_STRING . ' NOT NULL',
-                'name' => Schema::TYPE_STRING,
-                'KEY `wh_email` (`warehouse_id`)',
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            WarehouseOpeninghours::tableName(),
-            [
-                'id' => Schema::TYPE_PK,
-                'warehouse_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-                'sort_order' =>  Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
-                'monday' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0',
-                'tuesday' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0',
-                'wednesday' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0',
-                'thursday' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0',
-                'friday' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0',
-                'saturday' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0',
-                'sunday' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0',
-                'all_day' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0', // 24h
-                'opens' => Schema::TYPE_STRING,
-                'closes' => Schema::TYPE_STRING,
-                'break_from' => Schema::TYPE_STRING,
-                'break_to' => Schema::TYPE_STRING,
-                'KEY `wh_hours` (`warehouse_id`)',
-
-            ],
-            $tableOptions
-        );
+//        $this->createTable(
+//            Warehouse::tableName(),
+//            [
+//                'id' => Schema::TYPE_PK,
+//                'name' => Schema::TYPE_STRING,
+//                'is_active' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 1',
+//                'country_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+//                'city_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+//                'address' => Schema::TYPE_TEXT,
+//                'description' => Schema::TYPE_TEXT,
+//                'sort_order' =>  Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
+//                'map_latitude' => Schema::TYPE_STRING . ' NOT NULL DEFAULT \'\'',
+//                'map_longitude' => Schema::TYPE_STRING . ' NOT NULL DEFAULT \'\'',
+//                'shipping_center' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 1',
+//                'issuing_center' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 1',
+//                'xml_id' => Schema::TYPE_STRING . ' NOT NULL DEFAULT \'\'',
+//                'KEY `wh_country` (`country_id`)',
+//                'KEY `wh_city` (`city_id`)',
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            WarehousePhone::tableName(),
+//            [
+//                'id' => Schema::TYPE_PK,
+//                'warehouse_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+//                'sort_order' =>  Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
+//                'phone' => Schema::TYPE_STRING . ' NOT NULL',
+//                'name' => Schema::TYPE_STRING,
+//                'KEY `wh_phone` (`warehouse_id`)',
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            WarehouseEmail::tableName(),
+//            [
+//                'id' => Schema::TYPE_PK,
+//                'warehouse_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+//                'sort_order' =>  Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
+//                'email' => Schema::TYPE_STRING . ' NOT NULL',
+//                'name' => Schema::TYPE_STRING,
+//                'KEY `wh_email` (`warehouse_id`)',
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            WarehouseOpeninghours::tableName(),
+//            [
+//                'id' => Schema::TYPE_PK,
+//                'warehouse_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+//                'sort_order' =>  Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
+//                'monday' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0',
+//                'tuesday' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0',
+//                'wednesday' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0',
+//                'thursday' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0',
+//                'friday' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0',
+//                'saturday' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0',
+//                'sunday' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0',
+//                'all_day' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0', // 24h
+//                'opens' => Schema::TYPE_STRING,
+//                'closes' => Schema::TYPE_STRING,
+//                'break_from' => Schema::TYPE_STRING,
+//                'break_to' => Schema::TYPE_STRING,
+//                'KEY `wh_hours` (`warehouse_id`)',
+//
+//            ],
+//            $tableOptions
+//        );
         $this->createTable(
             Country::tableName(),
             [
@@ -1256,19 +1254,19 @@ class m150531_084444_new_init extends Migration
             ],
             $tableOptions
         );
-        $this->createTable(
-            WarehouseProduct::tableName(),
-            [
-                'id' => Schema::TYPE_PK,
-                'warehouse_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-                'product_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-                'in_warehouse' => Schema::TYPE_FLOAT . ' NOT NULL DEFAULT 0',
-                'reserved_count' => Schema::TYPE_FLOAT . ' NOT NULL DEFAULT 0',
-                'sku' => Schema::TYPE_STRING . ' NOT NULL DEFAULT \'\'',
-                'UNIQUE `wh_pr` (`warehouse_id`, `product_id`)',
-            ],
-            $tableOptions
-        );
+//        $this->createTable(
+//            WarehouseProduct::tableName(),
+//            [
+//                'id' => Schema::TYPE_PK,
+//                'warehouse_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+//                'product_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+//                'in_warehouse' => Schema::TYPE_FLOAT . ' NOT NULL DEFAULT 0',
+//                'reserved_count' => Schema::TYPE_FLOAT . ' NOT NULL DEFAULT 0',
+//                'sku' => Schema::TYPE_STRING . ' NOT NULL DEFAULT \'\'',
+//                'UNIQUE `wh_pr` (`warehouse_id`, `product_id`)',
+//            ],
+//            $tableOptions
+//        );
         $this->createTable(
             RatingItem::tableName(),
             [
@@ -1444,255 +1442,255 @@ class m150531_084444_new_init extends Migration
             ],
             $tableOptions
         );
-        $this->createTable(
-            CommercemlGuid::tableName(),
-            [
-                'id' => Schema::TYPE_PK,
-                'guid' => Schema::TYPE_STRING,
-                'name' => Schema::TYPE_TEXT,
-                'model_id' => Schema::TYPE_BIGINT,
-                'type' => 'ENUM(\'PRODUCT\', \'CATEGORY\', \'PROPERTY\') DEFAULT \'PRODUCT\'',
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            OrderStage::tableName(),
-            [
-                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
-                'name' => 'VARCHAR(255) NOT NULL',
-                'name_frontend' => 'VARCHAR(255) DEFAULT NULL',
-                'name_short' => 'VARCHAR(255) DEFAULT NULL',
-                'is_initial' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 0',
-                'is_buyer_stage' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 0',
-                'become_non_temporary' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 0',
-                'is_in_cart' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 0',
-                'immutable_by_user' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 1',
-                'immutable_by_manager' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 0',
-                'immutable_by_assigned' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 0',
-                'reach_goal_ym' => 'VARCHAR(255) DEFAULT NULL',
-                'reach_goal_ga' => 'VARCHAR(255) DEFAULT NULL',
-                'event_name' => 'VARCHAR(255) DEFAULT NULL',
-                'view' => 'VARCHAR(255) DEFAULT NULL',
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            OrderStageLeaf::tableName(),
-            [
-                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
-                'stage_from_id' => 'INT UNSIGNED NOT NULL',
-                'stage_to_id' => 'INT UNSIGNED NOT NULL',
-                'sort_order' => 'INT NOT NULL DEFAULT 0',
-                'button_label' => 'VARCHAR(255) NOT NULL',
-                'button_css_class' => 'VARCHAR(255) DEFAULT NULL',
-                'notify_buyer' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 0',
-                'buyer_notification_view' => 'VARCHAR(255) DEFAULT NULL',
-                'notify_manager' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 1',
-                'manager_notification_view' => 'VARCHAR(255) DEFAULT NULL',
-                'assign_to_user_id' => 'INT UNSIGNED NOT NULL DEFAULT 0',
-                'assign_to_role' => 'VARCHAR(255) DEFAULT NULL',
-                'notify_new_assigned_user' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 1',
-                'role_assignment_policy' => "ENUM('random','fair_distribution','last_picked_from_role')",
-                'event_name' => 'VARCHAR(255) DEFAULT NULL',
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            Discount::tableName(),
-            [
-                'id' => Schema::TYPE_PK,
-                'name' => Schema::TYPE_STRING . ' NOT NULL',
-                'appliance' => "ENUM('order_without_delivery','order_with_delivery','products','product_categories','delivery') NOT NULL",
-                'value' => Schema::TYPE_FLOAT . ' NOT NULL',
-                'value_in_percent' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 1',
-                'apply_order_price_lg' => Schema::TYPE_FLOAT . ' NOT NULL DEFAULT -1',
-            ]
-        );
-        $this->createTable(
-            DiscountCode::tableName(),
-            [
-                'id' => Schema::TYPE_PK,
-                'code' => Schema::TYPE_STRING . ' NOT NULL',
-                'discount_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-                'valid_from' => 'TIMESTAMP NULL DEFAULT NULL',
-                'valid_till' => 'TIMESTAMP NULL DEFAULT NULL',
-                'maximum_uses' => Schema::TYPE_INTEGER . ' DEFAULT NULL',
-            ]
-        );
-        $this->createTable(
-            CategoryDiscount::tableName(),
-            [
-                'id' => Schema::TYPE_PK,
-                'category_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-                'discount_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-            ]
-        );
-        $this->createTable(
-            UserDiscount::tableName(),
-            [
-                'id' => Schema::TYPE_PK,
-                'user_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-                'discount_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-            ]
-        );
-        $this->createTable(
-            OrderDiscount::tableName(),
-            [
-                'id' => Schema::TYPE_PK,
-                'order_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-                'discount_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-                'applied_date' => Schema::TYPE_TIMESTAMP
-            ]
-        );
-        $this->createTable(
-            ProductDiscount::tableName(),
-            [
-                'id' => Schema::TYPE_PK,
-                'product_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-                'discount_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-            ]
-        );
-        $this->createTable(
-            DiscountType::tableName(),
-            [
-                'id' => Schema::TYPE_PK,
-                'name' => Schema::TYPE_STRING . ' NOT NULL',
-                'class' => Schema::TYPE_STRING . ' NOT NULL',
-                'active' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 1',
-                'checking_class' => "ENUM('Order','OrderItem') NOT NULL",
-                'sort_order' => Schema::TYPE_INTEGER .' NOT NULL DEFAULT 0',
-                'add_view' => 'VARCHAR(255) DEFAULT NULL',
-            ]
-        );
-        $this->createTable(
-            SpecialPriceList::tableName(),
-            [
-                'id' => Schema::TYPE_PK,
-                'object_id' => Schema::TYPE_SMALLINT .' NOT NULL',
-                'class' => Schema::TYPE_STRING . ' NOT NULL',
-                'active' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 1',
-                'sort_order' => Schema::TYPE_INTEGER .' NOT NULL DEFAULT 0',
-                'params' => Schema::TYPE_TEXT,
-                'type' => "ENUM('core', 'discount', 'delivery', 'tax' ,'project') DEFAULT 'project'",
-                'handler' => 'VARCHAR(255) DEFAULT NULL',
-            ]
-        );
-        $this->createTable(
-            FilterSets::tableName(),
-            [
-            'id' => Schema::TYPE_PK,
-                'category_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-                'sort_order' =>  Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
-                'property_id' =>  Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
-                'is_filter_by_price' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0',
-                'delegate_to_children' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 1',
-            ]
-        );
-        //
-        $this->createTable(
-            Customer::tableName(),
-            [
-                'id' => Schema::TYPE_PK,
-                'user_id' => Schema::TYPE_INTEGER . ' DEFAULT 0',
-                'first_name' => Schema::TYPE_STRING,
-                'middle_name' => Schema::TYPE_STRING,
-                'last_name' => Schema::TYPE_STRING,
-                'email' => Schema::TYPE_STRING,
-                'phone' => Schema::TYPE_STRING,
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            Contragent::tableName(),
-            [
-                'id' => Schema::TYPE_PK,
-                'customer_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-                'type' => "ENUM('Individual', 'Self-employed', 'Legal entity') NOT NULL DEFAULT 'Individual'",
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            DeliveryInformation::tableName(),
-            [
-                'id' => Schema::TYPE_PK,
-                'contragent_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-                'country_id' => Schema::TYPE_INTEGER . ' DEFAULT 0',
-                'city_id' => Schema::TYPE_INTEGER . ' DEFAULT 0',
-                'zip_code' => Schema::TYPE_STRING,
-                'address' => Schema::TYPE_TEXT,
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            OrderDeliveryInformation::tableName(),
-            [
-                'id' => Schema::TYPE_PK,
-                'order_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-                'shipping_option_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-                'shipping_price' => Schema::TYPE_FLOAT . ' NOT NULL DEFAULT 0',
-                'shipping_price_total' => Schema::TYPE_FLOAT . ' NOT NULL DEFAULT 0',
-                'planned_delivery_date' => Schema::TYPE_DATE,
-                'planned_delivery_time' => Schema::TYPE_TIME,
-                'planned_delivery_time_range' => Schema::TYPE_STRING,
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            '{{%customer_eav}}',
-            [
-                'id' => Schema::TYPE_PK,
-                'object_model_id' => Schema::TYPE_INTEGER . ' UNSIGNED NOT NULL',
-                'property_group_id' => Schema::TYPE_INTEGER . ' UNSIGNED NOT NULL',
-                'key' => Schema::TYPE_STRING . ' NOT NULL',
-                'value' => Schema::TYPE_TEXT,
-                'sort_order' => Schema::TYPE_INTEGER,
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            '{{%contragent_eav}}',
-            [
-                'id' => Schema::TYPE_PK,
-                'object_model_id' => Schema::TYPE_INTEGER . ' UNSIGNED NOT NULL',
-                'property_group_id' => Schema::TYPE_INTEGER . ' UNSIGNED NOT NULL',
-                'key' => 'VARCHAR(255) NOT NULL',
-                'value' => Schema::TYPE_TEXT,
-                'sort_order' => Schema::TYPE_INTEGER,
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            '{{%order_delivery_information_eav}}',
-            [
-                'id' => Schema::TYPE_PK,
-                'object_model_id' => Schema::TYPE_INTEGER . ' UNSIGNED NOT NULL',
-                'property_group_id' => Schema::TYPE_INTEGER . ' UNSIGNED NOT NULL',
-                'key' => Schema::TYPE_STRING . ' NOT NULL',
-                'value' => Schema::TYPE_TEXT,
-                'sort_order' => Schema::TYPE_INTEGER,
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            Measure::tableName(),
-            [
-                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
-                'name' => 'VARCHAR(255) NOT NULL',
-                'symbol' => 'VARCHAR(255) NOT NULL',
-                'nominal' => 'FLOAT NOT NULL',
-            ],
-            $tableOptions
-        );
-        $this->createTable(
-            SpecialPriceObject::tableName(),
-            [
-                'id' => Schema::TYPE_PK,
-                'special_price_list_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-                'object_model_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-                'price' => Schema::TYPE_FLOAT . ' NOT NULL DEFAULT 0',
-                'name' => 'VARCHAR(255) DEFAULT NULL',
-            ]
-        );
+//        $this->createTable(
+//            CommercemlGuid::tableName(),
+//            [
+//                'id' => Schema::TYPE_PK,
+//                'guid' => Schema::TYPE_STRING,
+//                'name' => Schema::TYPE_TEXT,
+//                'model_id' => Schema::TYPE_BIGINT,
+//                'type' => 'ENUM(\'PRODUCT\', \'CATEGORY\', \'PROPERTY\') DEFAULT \'PRODUCT\'',
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            OrderStage::tableName(),
+//            [
+//                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
+//                'name' => 'VARCHAR(255) NOT NULL',
+//                'name_frontend' => 'VARCHAR(255) DEFAULT NULL',
+//                'name_short' => 'VARCHAR(255) DEFAULT NULL',
+//                'is_initial' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 0',
+//                'is_buyer_stage' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 0',
+//                'become_non_temporary' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 0',
+//                'is_in_cart' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 0',
+//                'immutable_by_user' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 1',
+//                'immutable_by_manager' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 0',
+//                'immutable_by_assigned' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 0',
+//                'reach_goal_ym' => 'VARCHAR(255) DEFAULT NULL',
+//                'reach_goal_ga' => 'VARCHAR(255) DEFAULT NULL',
+//                'event_name' => 'VARCHAR(255) DEFAULT NULL',
+//                'view' => 'VARCHAR(255) DEFAULT NULL',
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            OrderStageLeaf::tableName(),
+//            [
+//                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
+//                'stage_from_id' => 'INT UNSIGNED NOT NULL',
+//                'stage_to_id' => 'INT UNSIGNED NOT NULL',
+//                'sort_order' => 'INT NOT NULL DEFAULT 0',
+//                'button_label' => 'VARCHAR(255) NOT NULL',
+//                'button_css_class' => 'VARCHAR(255) DEFAULT NULL',
+//                'notify_buyer' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 0',
+//                'buyer_notification_view' => 'VARCHAR(255) DEFAULT NULL',
+//                'notify_manager' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 1',
+//                'manager_notification_view' => 'VARCHAR(255) DEFAULT NULL',
+//                'assign_to_user_id' => 'INT UNSIGNED NOT NULL DEFAULT 0',
+//                'assign_to_role' => 'VARCHAR(255) DEFAULT NULL',
+//                'notify_new_assigned_user' => 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 1',
+//                'role_assignment_policy' => "ENUM('random','fair_distribution','last_picked_from_role')",
+//                'event_name' => 'VARCHAR(255) DEFAULT NULL',
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            Discount::tableName(),
+//            [
+//                'id' => Schema::TYPE_PK,
+//                'name' => Schema::TYPE_STRING . ' NOT NULL',
+//                'appliance' => "ENUM('order_without_delivery','order_with_delivery','products','product_categories','delivery') NOT NULL",
+//                'value' => Schema::TYPE_FLOAT . ' NOT NULL',
+//                'value_in_percent' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 1',
+//                'apply_order_price_lg' => Schema::TYPE_FLOAT . ' NOT NULL DEFAULT -1',
+//            ]
+//        );
+//        $this->createTable(
+//            DiscountCode::tableName(),
+//            [
+//                'id' => Schema::TYPE_PK,
+//                'code' => Schema::TYPE_STRING . ' NOT NULL',
+//                'discount_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+//                'valid_from' => 'TIMESTAMP NULL DEFAULT NULL',
+//                'valid_till' => 'TIMESTAMP NULL DEFAULT NULL',
+//                'maximum_uses' => Schema::TYPE_INTEGER . ' DEFAULT NULL',
+//            ]
+//        );
+//        $this->createTable(
+//            CategoryDiscount::tableName(),
+//            [
+//                'id' => Schema::TYPE_PK,
+//                'category_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+//                'discount_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+//            ]
+//        );
+//        $this->createTable(
+//            UserDiscount::tableName(),
+//            [
+//                'id' => Schema::TYPE_PK,
+//                'user_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+//                'discount_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+//            ]
+//        );
+//        $this->createTable(
+//            OrderDiscount::tableName(),
+//            [
+//                'id' => Schema::TYPE_PK,
+//                'order_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+//                'discount_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+//                'applied_date' => Schema::TYPE_TIMESTAMP
+//            ]
+//        );
+//        $this->createTable(
+//            ProductDiscount::tableName(),
+//            [
+//                'id' => Schema::TYPE_PK,
+//                'product_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+//                'discount_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+//            ]
+//        );
+//        $this->createTable(
+//            DiscountType::tableName(),
+//            [
+//                'id' => Schema::TYPE_PK,
+//                'name' => Schema::TYPE_STRING . ' NOT NULL',
+//                'class' => Schema::TYPE_STRING . ' NOT NULL',
+//                'active' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 1',
+//                'checking_class' => "ENUM('Order','OrderItem') NOT NULL",
+//                'sort_order' => Schema::TYPE_INTEGER .' NOT NULL DEFAULT 0',
+//                'add_view' => 'VARCHAR(255) DEFAULT NULL',
+//            ]
+//        );
+//        $this->createTable(
+//            SpecialPriceList::tableName(),
+//            [
+//                'id' => Schema::TYPE_PK,
+//                'object_id' => Schema::TYPE_SMALLINT .' NOT NULL',
+//                'class' => Schema::TYPE_STRING . ' NOT NULL',
+//                'active' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 1',
+//                'sort_order' => Schema::TYPE_INTEGER .' NOT NULL DEFAULT 0',
+//                'params' => Schema::TYPE_TEXT,
+//                'type' => "ENUM('core', 'discount', 'delivery', 'tax' ,'project') DEFAULT 'project'",
+//                'handler' => 'VARCHAR(255) DEFAULT NULL',
+//            ]
+//        );
+//        $this->createTable(
+//            FilterSets::tableName(),
+//            [
+//            'id' => Schema::TYPE_PK,
+//                'category_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+//                'sort_order' =>  Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
+//                'property_id' =>  Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
+//                'is_filter_by_price' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0',
+//                'delegate_to_children' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 1',
+//            ]
+//        );
+//        //
+//        $this->createTable(
+//            Customer::tableName(),
+//            [
+//                'id' => Schema::TYPE_PK,
+//                'user_id' => Schema::TYPE_INTEGER . ' DEFAULT 0',
+//                'first_name' => Schema::TYPE_STRING,
+//                'middle_name' => Schema::TYPE_STRING,
+//                'last_name' => Schema::TYPE_STRING,
+//                'email' => Schema::TYPE_STRING,
+//                'phone' => Schema::TYPE_STRING,
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            Contragent::tableName(),
+//            [
+//                'id' => Schema::TYPE_PK,
+//                'customer_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+//                'type' => "ENUM('Individual', 'Self-employed', 'Legal entity') NOT NULL DEFAULT 'Individual'",
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            DeliveryInformation::tableName(),
+//            [
+//                'id' => Schema::TYPE_PK,
+//                'contragent_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+//                'country_id' => Schema::TYPE_INTEGER . ' DEFAULT 0',
+//                'city_id' => Schema::TYPE_INTEGER . ' DEFAULT 0',
+//                'zip_code' => Schema::TYPE_STRING,
+//                'address' => Schema::TYPE_TEXT,
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            OrderDeliveryInformation::tableName(),
+//            [
+//                'id' => Schema::TYPE_PK,
+//                'order_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+//                'shipping_option_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+//                'shipping_price' => Schema::TYPE_FLOAT . ' NOT NULL DEFAULT 0',
+//                'shipping_price_total' => Schema::TYPE_FLOAT . ' NOT NULL DEFAULT 0',
+//                'planned_delivery_date' => Schema::TYPE_DATE,
+//                'planned_delivery_time' => Schema::TYPE_TIME,
+//                'planned_delivery_time_range' => Schema::TYPE_STRING,
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            '{{%customer_eav}}',
+//            [
+//                'id' => Schema::TYPE_PK,
+//                'object_model_id' => Schema::TYPE_INTEGER . ' UNSIGNED NOT NULL',
+//                'property_group_id' => Schema::TYPE_INTEGER . ' UNSIGNED NOT NULL',
+//                'key' => Schema::TYPE_STRING . ' NOT NULL',
+//                'value' => Schema::TYPE_TEXT,
+//                'sort_order' => Schema::TYPE_INTEGER,
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            '{{%contragent_eav}}',
+//            [
+//                'id' => Schema::TYPE_PK,
+//                'object_model_id' => Schema::TYPE_INTEGER . ' UNSIGNED NOT NULL',
+//                'property_group_id' => Schema::TYPE_INTEGER . ' UNSIGNED NOT NULL',
+//                'key' => 'VARCHAR(255) NOT NULL',
+//                'value' => Schema::TYPE_TEXT,
+//                'sort_order' => Schema::TYPE_INTEGER,
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            '{{%order_delivery_information_eav}}',
+//            [
+//                'id' => Schema::TYPE_PK,
+//                'object_model_id' => Schema::TYPE_INTEGER . ' UNSIGNED NOT NULL',
+//                'property_group_id' => Schema::TYPE_INTEGER . ' UNSIGNED NOT NULL',
+//                'key' => Schema::TYPE_STRING . ' NOT NULL',
+//                'value' => Schema::TYPE_TEXT,
+//                'sort_order' => Schema::TYPE_INTEGER,
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            Measure::tableName(),
+//            [
+//                'id' => 'INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT',
+//                'name' => 'VARCHAR(255) NOT NULL',
+//                'symbol' => 'VARCHAR(255) NOT NULL',
+//                'nominal' => 'FLOAT NOT NULL',
+//            ],
+//            $tableOptions
+//        );
+//        $this->createTable(
+//            SpecialPriceObject::tableName(),
+//            [
+//                'id' => Schema::TYPE_PK,
+//                'special_price_list_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+//                'object_model_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+//                'price' => Schema::TYPE_FLOAT . ' NOT NULL DEFAULT 0',
+//                'name' => 'VARCHAR(255) DEFAULT NULL',
+//            ]
+//        );
         $this->createTable(
             ThemeParts::tableName(),
             [
@@ -1842,15 +1840,15 @@ class m150531_084444_new_init extends Migration
             ],
             $tableOptions
         );
-        $this->createTable(
-            OrderCode::tableName(),
-            [
-                'id' => Schema::TYPE_PK,
-                'order_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-                'discount_code_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-                'status' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0'
-            ]
-        );
+//        $this->createTable(
+//            OrderCode::tableName(),
+//            [
+//                'id' => Schema::TYPE_PK,
+//                'order_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+//                'discount_code_id' => Schema::TYPE_INTEGER . ' NOT NULL',
+//                'status' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0'
+//            ]
+//        );
         // Data
         // Backend menu
         $this->insert(
@@ -1871,37 +1869,37 @@ class m150531_084444_new_init extends Migration
                 [$rootId, 'Pages', 'page/backend/index', 'file-o', 'core', 'content manage'],
             ]
         );
-        $this->insert(
-            BackendMenu::tableName(),
-            [
-                'parent_id' => $rootId,
-                'name' => 'Shop',
-                'icon' => 'shopping-cart',
-                'added_by_ext' => 'core',
-                'rbac_check' => 'shop manage',
-                'route' => '',
-            ]
-        );
-        $lastId = $this->db->lastInsertID;
-        $this->batchInsert(
-            BackendMenu::tableName(),
-            ['parent_id', 'name', 'route', 'icon', 'added_by_ext', 'rbac_check'],
-            [
-                [$lastId, 'Categories', 'shop/backend-category/index', 'tree', 'core', 'category manage'],
-                [$lastId, 'Products', 'shop/backend-product/index', 'list', 'core', 'product manage'],
-                [$lastId, 'Orders', 'shop/backend-order/index', 'list-alt', 'core', 'order manage'],
-                [$lastId, 'Stages', 'shop/backend-stage/index', 'sitemap', 'core', 'order status manage'],
-                [$lastId, 'Payment types', 'shop/backend-payment-type/index', 'info-circle', 'core', 'payment manage'],
-                [$lastId, 'Filter sets', 'shop/backend-filter-sets/index', 'filter', 'core', 'category manage'],
-                [$lastId, 'Shipping options', 'shop/backend-shipping-option/index', 'truck', 'core', 'shipping manage'],
-                [$lastId, 'Categories groups', 'shop/backend-category-group/index', 'folder-o', 'core', 'category manage'],
-                [$lastId, 'Prefiltered pages', 'shop/backend-prefiltered-pages/index', 'tag', 'core', 'shop manage'],
-                [$lastId, 'Currencies', 'shop/backend-currencies/index', 'usd', 'core', 'shop manage'],
-                [$lastId, 'Measures', 'shop/backend-measure/index', 'calculator', 'core', 'shop manage'],
-                [$lastId, 'Discounts', 'shop/backend-discount/index', 'shekel', 'core', 'shop manage'],
-                [$lastId, 'Warehouse', 'shop/backend-warehouse/index', 'cubes', 'core', 'shop manage'],
-            ]
-        );
+//        $this->insert(
+//            BackendMenu::tableName(),
+//            [
+//                'parent_id' => $rootId,
+//                'name' => 'Shop',
+//                'icon' => 'shopping-cart',
+//                'added_by_ext' => 'core',
+//                'rbac_check' => 'shop manage',
+//                'route' => '',
+//            ]
+//        );
+//        $lastId = $this->db->lastInsertID;
+//        $this->batchInsert(
+//            BackendMenu::tableName(),
+//            ['parent_id', 'name', 'route', 'icon', 'added_by_ext', 'rbac_check'],
+//            [
+//                [$lastId, 'Categories', 'shop/backend-category/index', 'tree', 'core', 'category manage'],
+//                [$lastId, 'Products', 'shop/backend-product/index', 'list', 'core', 'product manage'],
+//                [$lastId, 'Orders', 'shop/backend-order/index', 'list-alt', 'core', 'order manage'],
+//                [$lastId, 'Stages', 'shop/backend-stage/index', 'sitemap', 'core', 'order status manage'],
+//                [$lastId, 'Payment types', 'shop/backend-payment-type/index', 'info-circle', 'core', 'payment manage'],
+//                [$lastId, 'Filter sets', 'shop/backend-filter-sets/index', 'filter', 'core', 'category manage'],
+//                [$lastId, 'Shipping options', 'shop/backend-shipping-option/index', 'truck', 'core', 'shipping manage'],
+//                [$lastId, 'Categories groups', 'shop/backend-category-group/index', 'folder-o', 'core', 'category manage'],
+//                [$lastId, 'Prefiltered pages', 'shop/backend-prefiltered-pages/index', 'tag', 'core', 'shop manage'],
+//                [$lastId, 'Currencies', 'shop/backend-currencies/index', 'usd', 'core', 'shop manage'],
+//                [$lastId, 'Measures', 'shop/backend-measure/index', 'calculator', 'core', 'shop manage'],
+//                [$lastId, 'Discounts', 'shop/backend-discount/index', 'shekel', 'core', 'shop manage'],
+//                [$lastId, 'Warehouse', 'shop/backend-warehouse/index', 'cubes', 'core', 'shop manage'],
+//            ]
+//        );
         $this->insert(
             BackendMenu::tableName(),
             [
@@ -1994,8 +1992,8 @@ class m150531_084444_new_init extends Migration
                 [$lastId, 'Spam Form Checker', 'backend/spam-checker/index', 'send-o', 'core', 'setting manage'],
                 [$lastId, 'Backend menu', 'backend/backend-menu/index', 'list-alt', 'core', 'setting manage'],
                 [$lastId, 'Data', 'data/file/index', 'database', 'core', 'data manage'],
-                [$lastId, 'YML', 'shop/backend-yml/settings', 'code', 'core', 'content manage'],
-                [$lastId, 'Api', 'backend/api/index', 'exchange', 'core', 'api manage'],
+    //                [$lastId, 'YML', 'shop/backend-yml/settings', 'code', 'core', 'content manage'],
+            [$lastId, 'Api', 'backend/api/index', 'exchange', 'core', 'api manage'],
             ]
         );
         //
@@ -2024,83 +2022,83 @@ class m150531_084444_new_init extends Migration
                     Yii::$app->db->schema->getRawTableName('{{%page_static_value_category}}'),
                     'slug',
                 ],
-                [
-                    'Category',
-                    Category::className(),
-                    Yii::$app->db->schema->getRawTableName(Category::tableName()),
-                    Yii::$app->db->schema->getRawTableName('{{%category_property}}'),
-                    Yii::$app->db->schema->getRawTableName('{{%category_eav}}'),
-                    Yii::$app->db->schema->getRawTableName('{{%category_category}}'),
-                    Yii::$app->db->schema->getRawTableName('{{%category_category_full_slug}}'),
-                    Yii::$app->db->schema->getRawTableName('{{%category_static_value_category}}'),
-                    'slug',
-                ],
-            ]
+    //                [
+//                    'Category',
+//                    Category::className(),
+//                    Yii::$app->db->schema->getRawTableName(Category::tableName()),
+//                    Yii::$app->db->schema->getRawTableName('{{%category_property}}'),
+//                    Yii::$app->db->schema->getRawTableName('{{%category_eav}}'),
+//                    Yii::$app->db->schema->getRawTableName('{{%category_category}}'),
+//                    Yii::$app->db->schema->getRawTableName('{{%category_category_full_slug}}'),
+//                    Yii::$app->db->schema->getRawTableName('{{%category_static_value_category}}'),
+//                    'slug',
+//                ],
+                ]
         );
-        $this->insert(
-            Object::tableName(),
-            [
-                'name' => 'Product',
-                'object_class' => Product::className(),
-                'object_table_name' => Yii::$app->db->schema->getRawTableName(Product::tableName()),
-                'column_properties_table_name' => Yii::$app->db->schema->getRawTableName('{{%product_property}}'),
-                'eav_table_name' => Yii::$app->db->schema->getRawTableName('{{%product_eav}}'),
-                'categories_table_name' => Yii::$app->db->schema->getRawTableName('{{%product_category}}'),
-                'link_slug_category' => Yii::$app->db->schema->getRawTableName('{{%product_category_full_slug}}'),
-                'link_slug_static_value' => Yii::$app->db->schema->getRawTableName('{{%product_static_value_category}}'),
-                'object_slug_attribute' => 'slug',
-            ]
-        );
-        $lastInsertId = Yii::$app->db->lastInsertID;
-        $this->batchInsert(
-            Route::tableName(),
-            ['route', 'url_template', 'object_id', 'name'],
-            [
-                [
-                    'shop/product/list',
-                    Json::encode(
-                        [
-                            [
-                                "class" => "app\\properties\\url\\StaticPart",
-                                "static_part" => "catalog",
-                                "parameters" => [
-                                    "category_group_id" => 1,
-                                ],
-                            ],
-                            [
-                                "class" => "app\\properties\\url\\PartialCategoryPathPart",
-                                "category_group_id" => 1
-                            ],
-                        ]
-                    ),
-                    $lastInsertId,
-                    ''
-                ],
-                [
-                    'shop/product/show',
-                    Json::encode(
-                        [
-                            [
-                                "class" => "app\\properties\\url\\StaticPart",
-                                "static_part" => "catalog",
-                                "parameters" => [
-                                    "category_group_id" => 1,
-                                ],
-                            ],
-                            [
-                                "class" => "app\\properties\\url\\FullCategoryPathPart",
-                                "category_group_id" => 1,
-                            ],
-                            [
-                                "class" => "app\\properties\\url\\ObjectSlugPart",
-                            ],
-                        ]
-                    ),
-                    $lastInsertId,
-                    ''
-                ],
-            ]
-        );
+//        $this->insert(
+//            Object::tableName(),
+//            [
+//                'name' => 'Product',
+//                'object_class' => Product::className(),
+//                'object_table_name' => Yii::$app->db->schema->getRawTableName(Product::tableName()),
+//                'column_properties_table_name' => Yii::$app->db->schema->getRawTableName('{{%product_property}}'),
+//                'eav_table_name' => Yii::$app->db->schema->getRawTableName('{{%product_eav}}'),
+//                'categories_table_name' => Yii::$app->db->schema->getRawTableName('{{%product_category}}'),
+//                'link_slug_category' => Yii::$app->db->schema->getRawTableName('{{%product_category_full_slug}}'),
+//                'link_slug_static_value' => Yii::$app->db->schema->getRawTableName('{{%product_static_value_category}}'),
+//                'object_slug_attribute' => 'slug',
+//            ]
+//        );
+//        $lastInsertId = Yii::$app->db->lastInsertID;
+//        $this->batchInsert(
+//            Route::tableName(),
+//            ['route', 'url_template', 'object_id', 'name'],
+//            [
+////                [
+////                    'shop/product/list',
+////                    Json::encode(
+////                        [
+////                            [
+////                                "class" => "app\\properties\\url\\StaticPart",
+////                                "static_part" => "catalog",
+////                                "parameters" => [
+////                                    "category_group_id" => 1,
+////                                ],
+////                            ],
+////                            [
+////                                "class" => "app\\properties\\url\\PartialCategoryPathPart",
+////                                "category_group_id" => 1
+////                            ],
+////                        ]
+////                    ),
+////                    $lastInsertId,
+////                    ''
+////                ],
+//                [
+//                    'shop/product/show',
+//                    Json::encode(
+//                        [
+//                            [
+//                                "class" => "app\\properties\\url\\StaticPart",
+//                                "static_part" => "catalog",
+//                                "parameters" => [
+//                                    "category_group_id" => 1,
+//                                ],
+//                            ],
+//                            [
+//                                "class" => "app\\properties\\url\\FullCategoryPathPart",
+//                                "category_group_id" => 1,
+//                            ],
+//                            [
+//                                "class" => "app\\properties\\url\\ObjectSlugPart",
+//                            ],
+//                        ]
+//                    ),
+//                    $lastInsertId,
+//                    ''
+//                ],
+//            ]
+//        );
         $this->batchInsert(
             PropertyHandler::tableName(),
             [
@@ -2200,248 +2198,248 @@ class m150531_084444_new_init extends Migration
                 'title' => 'Main page',
             ]
         );
-        $this->insert(
-            CategoryGroup::tableName(),
-            [
-                'name' => 'Shop',
-            ]
-        );
-        $this->insert(
-            Category::tableName(),
-            [
-                'category_group_id' => Yii::$app->db->lastInsertID,
-                'parent_id' => 0,
-                'name' => Yii::t('app', 'Catalog'),
-                'title' => Yii::t('app', 'Catalog'),
-                'h1' => Yii::t('app', 'Catalog'),
-                'meta_description' => Yii::t('app', 'Catalog'),
-                'breadcrumbs_label' => Yii::t('app', 'Catalog'),
-                'slug' => 'catalog',
-                'slug_compiled' => 'catalog',
-            ]
-        );
-        $this->batchInsert(
-            ShippingOption::tableName(),
-            ['name', 'description', 'price_from', 'price_to', 'cost', 'sort', 'active'],
-            [
-                [
-                    Yii::t('app', 'Self-pickup'),
-                    '',
-                    '0',
-                    '0',
-                    '0',
-                    '1',
-                    '1',
-                ],
-                [
-                    Yii::t('app', 'Delivery of mail'),
-                    '',
-                    '0',
-                    '0',
-                    '100',
-                    '2',
-                    '1',
-                ],
-            ]
-        );
-        $this->batchInsert(
-            PaymentType::tableName(),
-            ['name', 'class', 'params', 'active', 'sort'],
-            [
-                [
-                    Yii::t('app', 'Cash'),
-                    app\components\payment\CashPayment::className(),
-                    '[]',
-                    '1',
-                    '1'
-                ],
-                [
-                    'Robokassa',
-                    app\components\payment\RobokassaPayment::className(),
-                    Json::encode(
-                        [
-                            'merchantLogin' => '',
-                            'merchantPass1' => '',
-                            'merchantPass2' => '',
-                            'merchantUrl' => '',
-                        ]
-                    ),
-                    '1',
-                    '2'
-                ],
-                [
-                    'PayU',
-                    app\components\payment\PayUPayment::className(),
-                    Json::encode(
-                        [
-                            'merchantName' => '',
-                            'secretKey' => '',
-                        ]
-                    ),
-                    '0',
-                    '3'
-                ],
-                [
-                    'RBK Money',
-                    app\components\payment\RBKMoneyPayment::className(),
-                    Json::encode(
-                        [
-                            'eshopId' => '',
-                            'currency' => 'RUR', // RUR, USD, EUR, UAH
-                            'language' => 'ru', // en, ru
-                            'secretKey' => '',
-                            'serviceName' => '',
-                        ]
-                    ),
-                    '0',
-                    '4'
-                ],
-                [
-                    'IntellectMoney',
-                    app\components\payment\IntellectMoneyPayment::className(),
-                    Json::encode(
-                        [
-                            'eshopId' => '',
-                            'currency' => 'RUR', // RUR, USD, EUR, UAH
-                            'language' => 'ru', // en, ru
-                            'secretKey' => '',
-                            'serviceName' => '',
-                        ]
-                    ),
-                    '0',
-                    '5'
-                ],
-                [
-                    'Interkassa',
-                    app\components\payment\InterkassaPayment::className(),
-                    Json::encode(
-                        [
-                            'checkoutId' => '',
-                            'currency' => 'RUB', // RUB, USD, EUR, UAH, BYR, XAU, XTS
-                            'locale' => 'ru',
-                            'secretKey' => '',
-                        ]
-                    ),
-                    '0',
-                    '6'
-                ],
-                [
-                    'Futubank',
-                    app\components\payment\FutubankPayment::className(),
-                    Json::encode(
-                        [
-                            'testing' => '1',
-                            'merchant' => '',
-                            'currency' => 'RUB',
-                            'secretKey' => '',
-                        ]
-                    ),
-                    '0',
-                    '7'
-                ],
-                [
-                    'Pay2Pay',
-                    app\components\payment\Pay2PayPayment::className(),
-                    Json::encode(
-                        [
-                            'hiddenKey' => '',
-                            'currency' => 'RUB',
-                            'language' => 'ru',
-                            'merchantId' => '',
-                            'secretKey' => '',
-                            'testMode' => 0,
-                        ]
-                    ),
-                    '0',
-                    '8'
-                ],
-                [
-                    'SpryPay',
-                    app\components\payment\SpryPayPayment::className(),
-                    Json::encode(
-                        [
-                            'currency' => 'rur',
-                            'language' => 'ru',
-                            'shopId' => '',
-                            'secretKey' => '',
-                        ]
-                    ),
-                    '0',
-                    '9'
-                ],
-                [
-                    'WalletOne',
-                    app\components\payment\WalletOnePayment::className(),
-                    Json::encode(
-                        [
-                            'currency' => 643,
-                            'locale' => 'ru-RU',
-                            'merchantId' => '',
-                            'secretKey' => '',
-                        ]
-                    ),
-                    '0',
-                    '10'
-                ],
-                [
-                    'PayOnline',
-                    app\components\payment\PayOnlinePayment::className(),
-                    Json::encode(
-                        [
-                            'currency' => 'RUB',
-                            'language' => 'ru',
-                            'merchantId' => '',
-                            'privateKey' => '',
-                        ]
-                    ),
-                    '0',
-                    '11'
-                ],
-                [
-                    'LiqPay',
-                    app\components\payment\LiqPayPayment::className(),
-                    Json::encode(
-                        [
-                            'currency' => 'RUB',
-                            'language' => 'ru',
-                            'privateKey' => '',
-                            'publicKey' => '',
-                        ]
-                    ),
-                    '0',
-                    '12'
-                ],
-                [
-                    'Platron',
-                    app\modules\shop\models\PaymentType::tableName(),
-                    Json::encode(
-                        [
-                            'merchantId' => '',
-                            'secretKey' => '',
-                            'strCurrency' => 'RUR',
-                            'merchantUrl' => 'www.platron.ru',
-                            'merchantScriptName' => 'payment.php'
-                        ]
-                    ),
-                    0,
-                    13
-                ],
-            ]
-        );
-        $this->insert(
-            Object::tableName(),
-            [
-                'name' => 'Order',
-                'object_class' => Order::className(),
-                'object_table_name' => Yii::$app->db->schema->getRawTableName(Order::tableName()),
-                'column_properties_table_name' => Yii::$app->db->schema->getRawTableName('{{%order_property}}'),
-                'eav_table_name' => Yii::$app->db->schema->getRawTableName('{{%order_eav}}'),
-                'categories_table_name' => Yii::$app->db->schema->getRawTableName('{{%order_category}}'),
-                'link_slug_category' => Yii::$app->db->schema->getRawTableName('{{%order_category_full_slug}}'),
-                'link_slug_static_value' => Yii::$app->db->schema->getRawTableName('{{%order_static_value_full_slug}}'),
-                'object_slug_attribute' => 'slug',
-            ]
-        );
+//        $this->insert(
+//            CategoryGroup::tableName(),
+//            [
+//                'name' => 'Shop',
+//            ]
+//        );
+//        $this->insert(
+//            Category::tableName(),
+//            [
+//                'category_group_id' => Yii::$app->db->lastInsertID,
+//                'parent_id' => 0,
+//                'name' => Yii::t('app', 'Catalog'),
+//                'title' => Yii::t('app', 'Catalog'),
+//                'h1' => Yii::t('app', 'Catalog'),
+//                'meta_description' => Yii::t('app', 'Catalog'),
+//                'breadcrumbs_label' => Yii::t('app', 'Catalog'),
+//                'slug' => 'catalog',
+//                'slug_compiled' => 'catalog',
+//            ]
+//        );
+//        $this->batchInsert(
+//            ShippingOption::tableName(),
+//            ['name', 'description', 'price_from', 'price_to', 'cost', 'sort', 'active'],
+//            [
+//                [
+//                    Yii::t('app', 'Self-pickup'),
+//                    '',
+//                    '0',
+//                    '0',
+//                    '0',
+//                    '1',
+//                    '1',
+//                ],
+//                [
+//                    Yii::t('app', 'Delivery of mail'),
+//                    '',
+//                    '0',
+//                    '0',
+//                    '100',
+//                    '2',
+//                    '1',
+//                ],
+//            ]
+//        );
+//        $this->batchInsert(
+//            PaymentType::tableName(),
+//            ['name', 'class', 'params', 'active', 'sort'],
+//            [
+//                [
+//                    Yii::t('app', 'Cash'),
+//                    app\components\payment\CashPayment::className(),
+//                    '[]',
+//                    '1',
+//                    '1'
+//                ],
+//                [
+//                    'Robokassa',
+//                    app\components\payment\RobokassaPayment::className(),
+//                    Json::encode(
+//                        [
+//                            'merchantLogin' => '',
+//                            'merchantPass1' => '',
+//                            'merchantPass2' => '',
+//                            'merchantUrl' => '',
+//                        ]
+//                    ),
+//                    '1',
+//                    '2'
+//                ],
+//                [
+//                    'PayU',
+//                    app\components\payment\PayUPayment::className(),
+//                    Json::encode(
+//                        [
+//                            'merchantName' => '',
+//                            'secretKey' => '',
+//                        ]
+//                    ),
+//                    '0',
+//                    '3'
+//                ],
+//                [
+//                    'RBK Money',
+//                    app\components\payment\RBKMoneyPayment::className(),
+//                    Json::encode(
+//                        [
+//                            'eshopId' => '',
+//                            'currency' => 'RUR', // RUR, USD, EUR, UAH
+//                            'language' => 'ru', // en, ru
+//                            'secretKey' => '',
+//                            'serviceName' => '',
+//                        ]
+//                    ),
+//                    '0',
+//                    '4'
+//                ],
+//                [
+//                    'IntellectMoney',
+//                    app\components\payment\IntellectMoneyPayment::className(),
+//                    Json::encode(
+//                        [
+//                            'eshopId' => '',
+//                            'currency' => 'RUR', // RUR, USD, EUR, UAH
+//                            'language' => 'ru', // en, ru
+//                            'secretKey' => '',
+//                            'serviceName' => '',
+//                        ]
+//                    ),
+//                    '0',
+//                    '5'
+//                ],
+//                [
+//                    'Interkassa',
+//                    app\components\payment\InterkassaPayment::className(),
+//                    Json::encode(
+//                        [
+//                            'checkoutId' => '',
+//                            'currency' => 'RUB', // RUB, USD, EUR, UAH, BYR, XAU, XTS
+//                            'locale' => 'ru',
+//                            'secretKey' => '',
+//                        ]
+//                    ),
+//                    '0',
+//                    '6'
+//                ],
+//                [
+//                    'Futubank',
+//                    app\components\payment\FutubankPayment::className(),
+//                    Json::encode(
+//                        [
+//                            'testing' => '1',
+//                            'merchant' => '',
+//                            'currency' => 'RUB',
+//                            'secretKey' => '',
+//                        ]
+//                    ),
+//                    '0',
+//                    '7'
+//                ],
+//                [
+//                    'Pay2Pay',
+//                    app\components\payment\Pay2PayPayment::className(),
+//                    Json::encode(
+//                        [
+//                            'hiddenKey' => '',
+//                            'currency' => 'RUB',
+//                            'language' => 'ru',
+//                            'merchantId' => '',
+//                            'secretKey' => '',
+//                            'testMode' => 0,
+//                        ]
+//                    ),
+//                    '0',
+//                    '8'
+//                ],
+//                [
+//                    'SpryPay',
+//                    app\components\payment\SpryPayPayment::className(),
+//                    Json::encode(
+//                        [
+//                            'currency' => 'rur',
+//                            'language' => 'ru',
+//                            'shopId' => '',
+//                            'secretKey' => '',
+//                        ]
+//                    ),
+//                    '0',
+//                    '9'
+//                ],
+//                [
+//                    'WalletOne',
+//                    app\components\payment\WalletOnePayment::className(),
+//                    Json::encode(
+//                        [
+//                            'currency' => 643,
+//                            'locale' => 'ru-RU',
+//                            'merchantId' => '',
+//                            'secretKey' => '',
+//                        ]
+//                    ),
+//                    '0',
+//                    '10'
+//                ],
+//                [
+//                    'PayOnline',
+//                    app\components\payment\PayOnlinePayment::className(),
+//                    Json::encode(
+//                        [
+//                            'currency' => 'RUB',
+//                            'language' => 'ru',
+//                            'merchantId' => '',
+//                            'privateKey' => '',
+//                        ]
+//                    ),
+//                    '0',
+//                    '11'
+//                ],
+//                [
+//                    'LiqPay',
+//                    app\components\payment\LiqPayPayment::className(),
+//                    Json::encode(
+//                        [
+//                            'currency' => 'RUB',
+//                            'language' => 'ru',
+//                            'privateKey' => '',
+//                            'publicKey' => '',
+//                        ]
+//                    ),
+//                    '0',
+//                    '12'
+//                ],
+//                [
+//                    'Platron',
+//                    app\modules\shop\models\PaymentType::tableName(),
+//                    Json::encode(
+//                        [
+//                            'merchantId' => '',
+//                            'secretKey' => '',
+//                            'strCurrency' => 'RUR',
+//                            'merchantUrl' => 'www.platron.ru',
+//                            'merchantScriptName' => 'payment.php'
+//                        ]
+//                    ),
+//                    0,
+//                    13
+//                ],
+//            ]
+//        );
+//        $this->insert(
+//            Object::tableName(),
+//            [
+//                'name' => 'Order',
+//                'object_class' => Order::className(),
+//                'object_table_name' => Yii::$app->db->schema->getRawTableName(Order::tableName()),
+//                'column_properties_table_name' => Yii::$app->db->schema->getRawTableName('{{%order_property}}'),
+//                'eav_table_name' => Yii::$app->db->schema->getRawTableName('{{%order_eav}}'),
+//                'categories_table_name' => Yii::$app->db->schema->getRawTableName('{{%order_category}}'),
+//                'link_slug_category' => Yii::$app->db->schema->getRawTableName('{{%order_category_full_slug}}'),
+//                'link_slug_static_value' => Yii::$app->db->schema->getRawTableName('{{%order_static_value_full_slug}}'),
+//                'object_slug_attribute' => 'slug',
+//            ]
+//        );
         $this->insert(
             PropertyGroup::tableName(),
             [
@@ -2630,24 +2628,24 @@ class m150531_084444_new_init extends Migration
                 'status' => 'ACTIVE',
             ]
         );
-        $this->batchInsert(
-            ProductListingSort::tableName(),
-            [
-                'name',
-                'sort_field',
-                'asc_desc',
-                'enabled',
-                'sort_order',
-            ],
-            [
-                ['Popularity', 'product.sort_order', 'asc', 1, 0],
-                ['Price 0-9', 'product.price', 'asc', 1, 1],
-                ['Price 9-0', 'product.price', 'desc', 1, 2],
-                ['Name', 'product.name', 'asc', 1, 3],
-                ['Name', 'product.name', 'desc', 1, 4],
-
-            ]
-        );
+//        $this->batchInsert(
+//            ProductListingSort::tableName(),
+//            [
+//                'name',
+//                'sort_field',
+//                'asc_desc',
+//                'enabled',
+//                'sort_order',
+//            ],
+//            [
+//                ['Popularity', 'product.sort_order', 'asc', 1, 0],
+//                ['Price 0-9', 'product.price', 'asc', 1, 1],
+//                ['Price 9-0', 'product.price', 'desc', 1, 2],
+//                ['Name', 'product.name', 'asc', 1, 3],
+//                ['Name', 'product.name', 'desc', 1, 4],
+//
+//            ]
+//        );
         $this->batchInsert(
             SliderHandler::tableName(),
             [
@@ -2697,52 +2695,52 @@ class m150531_084444_new_init extends Migration
                 [1, 3, 'http://st-1.dotplant.ru/img/dotplant-slider-demo/slide-3.jpg', '#3'],
             ]
         );
-        $this->insert(
-            CurrencyRateProvider::tableName(),
-            [
-                'name' => 'Google Finance',
-                'class_name' => 'Swap\\Provider\\GoogleFinanceProvider',
-            ]
-        );
-        $this->insert(
-            CurrencyRateProvider::tableName(),
-            [
-                'name' => 'Cbr Finance',
-                'class_name' => 'app\\components\\swap\\provider\\CbrFinanceProvider',
-            ]
-        );
-        $this->insert(
-            Currency::tableName(),
-            [
-                'name' => 'Ruble',
-                'iso_code' => 'RUB',
-                'is_main' => 1,
-                'format_string' => '# руб.',
-                'intl_formatting' => 0,
-            ]
-        );
-        $this->insert(
-            Currency::tableName(),
-            [
-                'name' => 'US Dollar',
-                'iso_code' => 'USD',
-                'convert_nominal' => 1,
-                'convert_rate' => 62.8353,
-                'sort_order' => 1,
-                'format_string' => '$ #',
-                'thousands_sep' => '.',
-                'dec_point' => ',',
-            ]
-        );
-        $this->insert(
-            Currency::tableName(),
-            [
-                'name' => 'Euro',
-                'iso_code' => 'EUR',
-                'convert_rate' => 71.3243,
-                'format_string' => '&euro; #',
-            ]
-        );
+//        $this->insert(
+//            CurrencyRateProvider::tableName(),
+//            [
+//                'name' => 'Google Finance',
+//                'class_name' => 'Swap\\Provider\\GoogleFinanceProvider',
+//            ]
+//        );
+//        $this->insert(
+//            CurrencyRateProvider::tableName(),
+//            [
+//                'name' => 'Cbr Finance',
+//                'class_name' => 'app\\components\\swap\\provider\\CbrFinanceProvider',
+//            ]
+//        );
+//        $this->insert(
+//            Currency::tableName(),
+//            [
+//                'name' => 'Ruble',
+//                'iso_code' => 'RUB',
+//                'is_main' => 1,
+//                'format_string' => '# руб.',
+//                'intl_formatting' => 0,
+//            ]
+//        );
+//        $this->insert(
+//            Currency::tableName(),
+//            [
+//                'name' => 'US Dollar',
+//                'iso_code' => 'USD',
+//                'convert_nominal' => 1,
+//                'convert_rate' => 62.8353,
+//                'sort_order' => 1,
+//                'format_string' => '$ #',
+//                'thousands_sep' => '.',
+//                'dec_point' => ',',
+//            ]
+//        );
+//        $this->insert(
+//            Currency::tableName(),
+//            [
+//                'name' => 'Euro',
+//                'iso_code' => 'EUR',
+//                'convert_rate' => 71.3243,
+//                'format_string' => '&euro; #',
+//            ]
+//        );
         $this->insert(
             Task::tableName(),
             [
@@ -2795,92 +2793,92 @@ class m150531_084444_new_init extends Migration
                 'country_id' => 2,
             ]
         );
-        $this->insert(
-            Warehouse::tableName(),
-            [
-                'name' => 'Main warehouse',
-                'country_id' => 1,
-                'city_id' => 1,
-                'address' => 'Kremlin',
-            ]
-        );
-        $this->insert(
-            WarehousePhone::tableName(),
-            [
-                'name' => 'Sales',
-                'warehouse_id' => 1,
-                'phone' => '+7 (495) 123-45-67',
-            ]
-        );
-        $this->insert(
-            WarehouseEmail::tableName(),
-            [
-                'name' => 'Sales',
-                'warehouse_id' => 1,
-                'email' => 'moscow@example.com',
-            ]
-        );
-        $this->insert(
-            WarehouseOpeninghours::tableName(),
-            [
-                'warehouse_id' => 1,
-                'monday' => 1,
-                'tuesday' => 1,
-                'wednesday' => 1,
-                'thursday' => 1,
-                'friday' => 1,
-                'saturday' => 1,
-                'sunday' => 1,
-                'all_day' => 1,
-                'opens' => '',
-                'closes' => '',
-                'break_from' => '12:00',
-                'break_to' => '13:00',
-            ]
-        );
-        $this->insert(
-            Warehouse::tableName(),
-            [
-                'name' => 'Second warehouse',
-                'country_id' => 2,
-                'city_id' => 3,
-                'address' => 'The WallStreet hidden warehouse',
-            ]
-        );
-        $this->insert(
-            WarehousePhone::tableName(),
-            [
-                'name' => 'Sales',
-                'warehouse_id' => 2,
-                'phone' => '+1 800 1-WAREHOUSE-1',
-            ]
-        );
-        $this->insert(
-            WarehouseEmail::tableName(),
-            [
-                'name' => 'Sales',
-                'warehouse_id' => 2,
-                'email' => 'nyc@example.com',
-            ]
-        );
-        $this->insert(
-            WarehouseOpeninghours::tableName(),
-            [
-                'warehouse_id' => 2,
-                'monday' => 1,
-                'tuesday' => 1,
-                'wednesday' => 1,
-                'thursday' => 1,
-                'friday' => 0,
-                'saturday' => 0,
-                'sunday' => 1,
-                'all_day' => 0,
-                'opens' => '9:00',
-                'closes' => '22:00',
-                'break_from' => '',
-                'break_to' => '',
-            ]
-        );
+//        $this->insert(
+//            Warehouse::tableName(),
+//            [
+//                'name' => 'Main warehouse',
+//                'country_id' => 1,
+//                'city_id' => 1,
+//                'address' => 'Kremlin',
+//            ]
+//        );
+//        $this->insert(
+//            WarehousePhone::tableName(),
+//            [
+//                'name' => 'Sales',
+//                'warehouse_id' => 1,
+//                'phone' => '+7 (495) 123-45-67',
+//            ]
+//        );
+//        $this->insert(
+//            WarehouseEmail::tableName(),
+//            [
+//                'name' => 'Sales',
+//                'warehouse_id' => 1,
+//                'email' => 'moscow@example.com',
+//            ]
+//        );
+//        $this->insert(
+//            WarehouseOpeninghours::tableName(),
+//            [
+//                'warehouse_id' => 1,
+//                'monday' => 1,
+//                'tuesday' => 1,
+//                'wednesday' => 1,
+//                'thursday' => 1,
+//                'friday' => 1,
+//                'saturday' => 1,
+//                'sunday' => 1,
+//                'all_day' => 1,
+//                'opens' => '',
+//                'closes' => '',
+//                'break_from' => '12:00',
+//                'break_to' => '13:00',
+//            ]
+//        );
+//        $this->insert(
+//            Warehouse::tableName(),
+//            [
+//                'name' => 'Second warehouse',
+//                'country_id' => 2,
+//                'city_id' => 3,
+//                'address' => 'The WallStreet hidden warehouse',
+//            ]
+//        );
+//        $this->insert(
+//            WarehousePhone::tableName(),
+//            [
+//                'name' => 'Sales',
+//                'warehouse_id' => 2,
+//                'phone' => '+1 800 1-WAREHOUSE-1',
+//            ]
+//        );
+//        $this->insert(
+//            WarehouseEmail::tableName(),
+//            [
+//                'name' => 'Sales',
+//                'warehouse_id' => 2,
+//                'email' => 'nyc@example.com',
+//            ]
+//        );
+//        $this->insert(
+//            WarehouseOpeninghours::tableName(),
+//            [
+//                'warehouse_id' => 2,
+//                'monday' => 1,
+//                'tuesday' => 1,
+//                'wednesday' => 1,
+//                'thursday' => 1,
+//                'friday' => 0,
+//                'saturday' => 0,
+//                'sunday' => 1,
+//                'all_day' => 0,
+//                'opens' => '9:00',
+//                'closes' => '22:00',
+//                'break_from' => '',
+//                'break_to' => '',
+//            ]
+//        );
         $this->batchInsert(
             Object::tableName(),
             [
@@ -2985,47 +2983,47 @@ class m150531_084444_new_init extends Migration
             ]
         );
 
-        $this->insert(
-            Events::tableName(),
-            [
-                'owner_class_name' => 'app\modules\shop\ShopModule',
-                'event_name' => 'product_page_showed',
-                'event_class_name' => 'app\\modules\\shop\\events\\ProductPageShowed',
-                'event_description' => 'Product page is showed to user',
-                'documentation_link' => '',
-            ]
-        );
-        $this->insert(
-            Events::tableName(),
-            [
-                'owner_class_name' => 'app\modules\shop\ShopModule',
-                'event_name' => 'product_showed_in_list',
-                'event_class_name' => 'app\\modules\\shop\\events\\ProductShowedInList',
-                'event_description' => 'Product is showed in product listing(shop/product/list)',
-                'documentation_link' => '',
-            ]
-        );
-        $this->insert(
-            Events::tableName(),
-            [
-                'owner_class_name' => 'app\modules\shop\ShopModule',
-                'event_name' => 'product_category_listed',
-                'event_class_name' => 'app\\modules\\shop\\events\\ProductCategoryListed',
-                'event_description' => 'Category is listed by shop/product/list as last_category_id.',
-                'documentation_link' => '',
-            ]
-        );
-        $this->insert(
-            EventHandlers::tableName(),
-            [
-                'event_id' => 1,
-                'sort_order' => 1,
-                'handler_class_name' => 'app\modules\shop\helpers\LastViewedProducts',
-                'handler_function_name' => 'handleProductShowed',
-                'non_deletable' => 1,
-                'triggering_type' => EventTriggeringHelper::TYPE_APPLICATION,
-            ]
-        );
+//        $this->insert(
+//            Events::tableName(),
+//            [
+//                'owner_class_name' => 'app\modules\shop\ShopModule',
+//                'event_name' => 'product_page_showed',
+//                'event_class_name' => 'app\\modules\\shop\\events\\ProductPageShowed',
+//                'event_description' => 'Product page is showed to user',
+//                'documentation_link' => '',
+//            ]
+//        );
+//        $this->insert(
+//            Events::tableName(),
+//            [
+//                'owner_class_name' => 'app\modules\shop\ShopModule',
+//                'event_name' => 'product_showed_in_list',
+//                'event_class_name' => 'app\\modules\\shop\\events\\ProductShowedInList',
+//                'event_description' => 'Product is showed in product listing(shop/product/list)',
+//                'documentation_link' => '',
+//            ]
+//        );
+//        $this->insert(
+//            Events::tableName(),
+//            [
+//                'owner_class_name' => 'app\modules\shop\ShopModule',
+//                'event_name' => 'product_category_listed',
+//                'event_class_name' => 'app\\modules\\shop\\events\\ProductCategoryListed',
+//                'event_description' => 'Category is listed by shop/product/list as last_category_id.',
+//                'documentation_link' => '',
+//            ]
+//        );
+//        $this->insert(
+//            EventHandlers::tableName(),
+//            [
+//                'event_id' => 1,
+//                'sort_order' => 1,
+//                'handler_class_name' => 'app\modules\shop\helpers\LastViewedProducts',
+//                'handler_function_name' => 'handleProductShowed',
+//                'non_deletable' => 1,
+//                'triggering_type' => EventTriggeringHelper::TYPE_APPLICATION,
+//            ]
+//        );
 
         $this->insert(
             ExtensionTypes::tableName(),
@@ -3057,539 +3055,539 @@ class m150531_084444_new_init extends Migration
                 'name' => 'Backend input widget',
             ]
         );
-        $this->batchInsert(
-            DiscountType::tableName(),
-            [
-                'name', 'class', 'checking_class', 'add_view'
-            ],
-            [
-                [
-                    'Discount Code', 'app\modules\shop\models\DiscountCode', 'Order', '@app/modules/shop/views/backend-discount/_discount_code'
-                ],
-                [
-                    'Category Discount', 'app\modules\shop\models\CategoryDiscount', 'OrderItem', '@app/modules/shop/views/backend-discount/_category_discount'
-                ],
-                [
-                    'User Discount', 'app\modules\shop\models\UserDiscount', 'Order', '@app/modules/shop/views/backend-discount/_user_discount'
-                ],
-                [
-                    'Order Discount', 'app\modules\shop\models\OrderDiscount', 'Order', '@app/modules/shop/views/backend-discount/_order_discount'
-                ],
-                [
-                    'Product Discount', 'app\modules\shop\models\ProductDiscount', 'OrderItem', '@app/modules/shop/views/backend-discount/_product_discount'
-                ],
-            ]
-        );
-
-        $this->batchInsert(
-            SpecialPriceList::tableName(),
-            [
-                'object_id',
-                'class',
-                'sort_order',
-                'type',
-                'handler',
-            ],
-            [
-                [
-                    \app\models\Object::getForClass(\app\modules\shop\models\Product::className())->id,
-                    'app\modules\shop\helpers\PriceHandlers',
-                    5,
-                    'core',
-                    'getCurrencyPriceProduct',
-                ],
-                [
-                    \app\models\Object::getForClass(\app\modules\shop\models\Order::className())->id,
-                    'app\modules\shop\helpers\PriceHandlers',
-                    10,
-                    'delivery',
-                    'getDeliveryPriceOrder',
-                ],
-                [
-                    \app\models\Object::getForClass(\app\modules\shop\models\Product::className())->id,
-                    'app\modules\shop\helpers\PriceHandlers',
-                    15,
-                    'discount',
-                    'getDiscountPriceProduct',
-                ],
-                [
-                    \app\models\Object::getForClass(\app\modules\shop\models\Order::className())->id,
-                    'app\modules\shop\helpers\PriceHandlers',
-                    20,
-                    'discount',
-                    'getDiscountPriceOrder',
-                ],
-
-            ]
-        );
-        $this->insert(
-            Object::tableName(),
-            [
-                'name' => 'Customer',
-                'object_class' => 'app\modules\shop\models\Customer',
-                'object_table_name' => 'customer',
-                'column_properties_table_name' => 'customer_property',
-                'eav_table_name' => 'customer_eav',
-                'categories_table_name' => 'customer_category',
-                'link_slug_category' => 'customer_category_slug',
-                'link_slug_static_value' => 'customer_slug_static',
-                'object_slug_attribute' => 'slug',
-            ]
-        );
-        $this->insert(
-            Object::tableName(),
-            [
-                'name' => 'Contragent',
-                'object_class' => 'app\modules\shop\models\Contragent',
-                'object_table_name' => 'contragent',
-                'column_properties_table_name' => 'contragent_property',
-                'eav_table_name' => 'contragent_eav',
-                'categories_table_name' => 'contragent_category',
-                'link_slug_category' => 'contragent_category_slug',
-                'link_slug_static_value' => 'contragent_slug_static',
-                'object_slug_attribute' => 'slug',
-            ]
-        );
-        $this->insert(
-            Object::tableName(),
-            [
-                'name' => 'OrderDeliveryInformation',
-                'object_class' => 'app\modules\shop\models\OrderDeliveryInformation',
-                'object_table_name' => 'order_delivery_information',
-                'column_properties_table_name' => 'order_delivery_information_property',
-                'eav_table_name' => 'order_delivery_information_eav',
-                'categories_table_name' => 'order_delivery_information_category',
-                'link_slug_category' => 'order_delivery_information_category_slug',
-                'link_slug_static_value' => 'order_delivery_information_slug_static',
-                'object_slug_attribute' => 'slug',
-            ]
-        );
-        $this->insert(
-            Events::tableName(),
-            [
-                'owner_class_name' => 'app\modules\shop\ShopModule',
-                'event_name' => 'order_stage_customer',
-                'event_class_name' => 'app\modules\shop\events\StageCustomer',
-                'selector_prefix' => '',
-                'event_description' => '',
-                'documentation_link' => '',
-            ]
-        );
-        $eventId = $this->db->lastInsertID;
-        $this->insert(
-            EventHandlers::tableName(),
-            [
-                'event_id' => $eventId,
-                'sort_order' => 0,
-                'handler_class_name' => 'app\modules\shop\helpers\BaseOrderStageHandlers',
-                'handler_function_name' => 'handleStageCustomer',
-                'is_active' => 1,
-                'non_deletable' => 0,
-                'triggering_type' => 'application_trigger',
-            ]
-        );
-        $this->insert(
-            Events::tableName(),
-            [
-                'owner_class_name' => 'app\modules\shop\ShopModule',
-                'event_name' => 'order_stage_delivery',
-                'event_class_name' => 'app\modules\shop\events\StageDelivery',
-                'selector_prefix' => '',
-                'event_description' => '',
-                'documentation_link' => '',
-            ]
-        );
-        $eventId = $this->db->lastInsertID;
-        $this->insert(
-            EventHandlers::tableName(),
-            [
-                'event_id' => $eventId,
-                'sort_order' => 0,
-                'handler_class_name' => 'app\modules\shop\helpers\BaseOrderStageHandlers',
-                'handler_function_name' => 'handleStageDelivery',
-                'is_active' => 1,
-                'non_deletable' => 0,
-                'triggering_type' => 'application_trigger',
-            ]
-        );
-        $this->insert(
-            Events::tableName(),
-            [
-                'owner_class_name' => 'app\modules\shop\ShopModule',
-                'event_name' => 'order_stage_payment',
-                'event_class_name' => 'app\modules\shop\events\StagePayment',
-                'selector_prefix' => '',
-                'event_description' => '',
-                'documentation_link' => '',
-            ]
-        );
-        $eventId = $this->db->lastInsertID;
-        $this->insert(
-            EventHandlers::tableName(),
-            [
-                'event_id' => $eventId,
-                'sort_order' => 0,
-                'handler_class_name' => 'app\modules\shop\helpers\BaseOrderStageHandlers',
-                'handler_function_name' => 'handleStagePayment',
-                'is_active' => 1,
-                'non_deletable' => 0,
-                'triggering_type' => 'application_trigger',
-            ]
-        );
-        $this->insert(
-            Events::tableName(),
-            [
-                'owner_class_name' => 'app\modules\shop\ShopModule',
-                'event_name' => 'order_stage_payment_pay',
-                'event_class_name' => 'app\modules\shop\events\StagePaymentPay',
-                'selector_prefix' => '',
-                'event_description' => '',
-                'documentation_link' => '',
-            ]
-        );
-        $eventId = $this->db->lastInsertID;
-        $this->insert(
-            EventHandlers::tableName(),
-            [
-                'event_id' => $eventId,
-                'sort_order' => 0,
-                'handler_class_name' => 'app\modules\shop\helpers\BaseOrderStageHandlers',
-                'handler_function_name' => 'handleStagePaymentPay',
-                'is_active' => 1,
-                'non_deletable' => 0,
-                'triggering_type' => 'application_trigger',
-            ]
-        );
-        $this->insert(
-            Events::tableName(),
-            [
-                'owner_class_name' => 'app\modules\shop\ShopModule',
-                'event_name' => 'order_stageleaf_customer',
-                'event_class_name' => 'app\modules\shop\events\StageLeafCustomer',
-                'selector_prefix' => '',
-                'event_description' => '',
-                'documentation_link' => '',
-            ]
-        );
-        $eventId = $this->db->lastInsertID;
-        $this->insert(
-            EventHandlers::tableName(),
-            [
-                'event_id' => $eventId,
-                'sort_order' => 0,
-                'handler_class_name' => 'app\modules\shop\helpers\BaseOrderStageHandlers',
-                'handler_function_name' => 'handleCustomer',
-                'is_active' => 1,
-                'non_deletable' => 0,
-                'triggering_type' => 'application_trigger',
-            ]
-        );
-        $this->insert(
-            Events::tableName(),
-            [
-                'owner_class_name' => 'app\modules\shop\ShopModule',
-                'event_name' => 'order_stageleaf_payment_choose',
-                'event_class_name' => 'app\modules\shop\events\StageLeafPayment',
-                'selector_prefix' => '',
-                'event_description' => '',
-                'documentation_link' => '',
-            ]
-        );
-        $eventId = $this->db->lastInsertID;
-        $this->insert(
-            EventHandlers::tableName(),
-            [
-                'event_id' => $eventId,
-                'sort_order' => 0,
-                'handler_class_name' => 'app\modules\shop\helpers\BaseOrderStageHandlers',
-                'handler_function_name' => 'handlePayment',
-                'is_active' => 1,
-                'non_deletable' => 0,
-                'triggering_type' => 'application_trigger',
-            ]
-        );
-        $this->insert(
-            Events::tableName(),
-            [
-                'owner_class_name' => 'app\modules\shop\ShopModule',
-                'event_name' => 'order_stageleaf_delivery_choose',
-                'event_class_name' => 'app\modules\shop\events\StageLeafDelivery',
-                'selector_prefix' => '',
-                'event_description' => '',
-                'documentation_link' => '',
-            ]
-        );
-        $eventId = $this->db->lastInsertID;
-        $this->insert(
-            EventHandlers::tableName(),
-            [
-                'event_id' => $eventId,
-                'sort_order' => 0,
-                'handler_class_name' => 'app\modules\shop\helpers\BaseOrderStageHandlers',
-                'handler_function_name' => 'handleDelivery',
-                'is_active' => 1,
-                'non_deletable' => 0,
-                'triggering_type' => 'application_trigger',
-            ]
-        );
-        $this->insert(
-            Events::tableName(),
-            [
-                'owner_class_name' => 'app\modules\shop\ShopModule',
-                'event_name' => 'order_stageleaf_payment_pay',
-                'event_class_name' => 'app\modules\shop\events\StageLeafPaymentPay',
-                'selector_prefix' => '',
-                'event_description' => '',
-                'documentation_link' => '',
-            ]
-        );
-        $eventId = $this->db->lastInsertID;
-        $this->insert(
-            EventHandlers::tableName(),
-            [
-                'event_id' => $eventId,
-                'sort_order' => 0,
-                'handler_class_name' => 'app\modules\shop\helpers\BaseOrderStageHandlers',
-                'handler_function_name' => 'handlePaymentPay',
-                'is_active' => 1,
-                'non_deletable' => 0,
-                'triggering_type' => 'application_trigger',
-            ]
-        );
-        $this->insert(
-            Events::tableName(),
-            [
-                'owner_class_name' => 'app\modules\shop\ShopModule',
-                'event_name' => 'order_stageleaf_manager_process',
-                'event_class_name' => 'app\modules\shop\events\StageLeafManagerProcess',
-                'selector_prefix' => '',
-                'event_description' => '',
-                'documentation_link' => '',
-            ]
-        );
-        $eventId = $this->db->lastInsertID;
-        $this->insert(
-            EventHandlers::tableName(),
-            [
-                'event_id' => $eventId,
-                'sort_order' => 0,
-                'handler_class_name' => 'app\modules\shop\helpers\BaseOrderStageHandlers',
-                'handler_function_name' => 'handleManagerProcess',
-                'is_active' => 1,
-                'non_deletable' => 0,
-                'triggering_type' => 'application_trigger',
-            ]
-        );
-        $this->insert(
-            Events::tableName(),
-            [
-                'owner_class_name' => 'app\modules\shop\ShopModule',
-                'event_name' => 'order_calculate',
-                'event_class_name' => 'app\modules\shop\events\OrderCalculateEvent',
-                'selector_prefix' => '',
-                'event_description' => '',
-                'documentation_link' => '',
-            ]
-        );
-        $eventId = $this->db->lastInsertID;
-        $this->insert(
-            EventHandlers::tableName(),
-            [
-                'event_id' => $eventId,
-                'sort_order' => 0,
-                'handler_class_name' => 'app\modules\shop\helpers\PriceHandlers',
-                'handler_function_name' => 'handleSaveDiscounts',
-                'is_active' => 1,
-                'non_deletable' => 0,
-                'triggering_type' => 'application_trigger',
-            ]
-        );
-        $this->insert(
-            EventHandlers::tableName(),
-            [
-                'event_id' => $eventId,
-                'sort_order' => -5,
-                'handler_class_name' => 'app\modules\shop\helpers\PriceHandlers',
-                'handler_function_name' => 'handleSaveDelivery',
-                'is_active' => 1,
-                'non_deletable' => 0,
-                'triggering_type' => 'application_trigger',
-            ]
-        );
-        $this->insert(
-            OrderStage::tableName(),
-            [
-                'name' => 'customer',
-                'name_frontend' => Yii::t('app', 'Your information'),
-                'name_short' => 'customer',
-                'is_initial' => 1,
-                'is_buyer_stage' => 1,
-                'become_non_temporary' => 0,
-                'is_in_cart' => 1,
-                'immutable_by_user' => 0,
-                'immutable_by_manager' => 0,
-                'immutable_by_assigned' => 0,
-                'reach_goal_ym' => '',
-                'reach_goal_ga' => '',
-                'event_name' => 'order_stage_customer',
-                'view' => '@app/modules/shop/views/cart/stages/name.php',
-            ]
-        );
-        $stageCustomer = $this->db->lastInsertID;
-        $this->insert(
-            OrderStage::tableName(),
-            [
-                'name' => 'delivery',
-                'name_frontend' => Yii::t('app', 'Delivery'),
-                'name_short' => 'delivery',
-                'is_initial' => 0,
-                'is_buyer_stage' => 1,
-                'become_non_temporary' => 0,
-                'is_in_cart' => 1,
-                'immutable_by_user' => 0,
-                'immutable_by_manager' => 0,
-                'immutable_by_assigned' => 0,
-                'reach_goal_ym' => '',
-                'reach_goal_ga' => '',
-                'event_name' => 'order_stage_delivery',
-                'view' => '@app/modules/shop/views/cart/stages/delivery.php',
-            ]
-        );
-        $stageDelivery = $this->db->lastInsertID;
-        $this->insert(
-            OrderStage::tableName(),
-            [
-                'name' => 'payment',
-                'name_frontend' => Yii::t('app', 'Payment method selection'),
-                'name_short' => 'payment',
-                'is_initial' => 0,
-                'is_buyer_stage' => 1,
-                'become_non_temporary' => 0,
-                'is_in_cart' => 1,
-                'immutable_by_user' => 0,
-                'immutable_by_manager' => 0,
-                'immutable_by_assigned' => 0,
-                'reach_goal_ym' => '',
-                'reach_goal_ga' => '',
-                'event_name' => 'order_stage_payment',
-                'view' => '@app/modules/shop/views/cart/stages/payment.php',
-            ]
-        );
-        $stagePayment = $this->db->lastInsertID;
-        $this->insert(
-            OrderStage::tableName(),
-            [
-                'name' => 'payment pay',
-                'name_frontend' => Yii::t('app', 'Payment'),
-                'name_short' => 'payment pay',
-                'is_initial' => 0,
-                'is_buyer_stage' => 0,
-                'become_non_temporary' => 1,
-                'is_in_cart' => 0,
-                'immutable_by_user' => 0,
-                'immutable_by_manager' => 0,
-                'immutable_by_assigned' => 0,
-                'reach_goal_ym' => '',
-                'reach_goal_ga' => '',
-                'event_name' => 'order_stage_payment_pay',
-                'view' => '@app/modules/shop/views/cart/stages/pay.php',
-            ]
-        );
-        $stagePaymentPay = $this->db->lastInsertID;
-        $this->insert(
-            OrderStageLeaf::tableName(),
-            [
-                'stage_from_id' => $stageCustomer,
-                'stage_to_id' => $stageDelivery,
-                'sort_order' => 0,
-                'button_label' => Yii::t('app', 'Delivery method selection'),
-                'button_css_class' => 'btn btn-primary',
-                'notify_manager' => 0,
-                'notify_new_assigned_user' => 0,
-                'role_assignment_policy' => 'random',
-                'event_name' => 'order_stageleaf_customer',
-            ]
-        );
-        $this->insert(
-            OrderStageLeaf::tableName(),
-            [
-                'stage_from_id' => $stageDelivery,
-                'stage_to_id' => $stagePayment,
-                'sort_order' => 0,
-                'button_label' => Yii::t('app', 'Payment method selection'),
-                'button_css_class' => 'btn btn-primary',
-                'notify_manager' => 0,
-                'notify_new_assigned_user' => 0,
-                'role_assignment_policy' => 'random',
-                'event_name' => 'order_stageleaf_delivery_choose',
-            ]
-        );
-        $this->insert(
-            OrderStageLeaf::tableName(),
-            [
-                'stage_from_id' => $stagePayment,
-                'stage_to_id' => $stagePaymentPay,
-                'sort_order' => 0,
-                'button_label' => Yii::t('app', 'Go to payment'),
-                'button_css_class' => 'btn btn-success',
-                'notify_manager' => 1,
-                'assign_to_user_id' => 0,
-                'assign_to_role' => null,
-                'notify_new_assigned_user' => 0,
-                'role_assignment_policy' => 'random',
-                'event_name' => 'order_stageleaf_payment_choose',
-            ]
-        );
-        $this->insert(
-            OrderStage::tableName(),
-            [
-                'name' => 'final',
-                'name_frontend' => Yii::t('app', 'Order complete'),
-                'name_short' => 'final',
-                'is_initial' => 0,
-                'is_buyer_stage' => 0,
-                'become_non_temporary' => 0,
-                'is_in_cart' => 0,
-                'immutable_by_user' => 1,
-                'immutable_by_manager' => 1,
-                'immutable_by_assigned' => 1,
-                'reach_goal_ym' => '',
-                'reach_goal_ga' => '',
-                'event_name' => 'order_stage_final',
-                'view' => '',
-            ]
-        );
-        $stage = $this->db->lastInsertID;
-        $this->insert(
-            OrderStageLeaf::tableName(),
-            [
-                'stage_from_id' => $stage,
-                'stage_to_id' => $stagePaymentPay,
-                'sort_order' => 0,
-                'button_label' => Yii::t('app', 'Order complete'),
-                'button_css_class' => 'btn btn-primary',
-                'notify_manager' => 0,
-                'notify_new_assigned_user' => 0,
-                'role_assignment_policy' => 'random',
-                'event_name' => 'order_stage_leaf_final',
-            ]
-        );
-        $this->insert(
-            Measure::tableName(),
-            [
-                'name' => Yii::t('app', 'Pieces'),
-                'symbol' => Yii::t('app', 'pcs'),
-                'nominal' => 1,
-            ]
-        );
+//        $this->batchInsert(
+//            DiscountType::tableName(),
+//            [
+//                'name', 'class', 'checking_class', 'add_view'
+//            ],
+//            [
+//                [
+//                    'Discount Code', 'app\modules\shop\models\DiscountCode', 'Order', '@app/modules/shop/views/backend-discount/_discount_code'
+//                ],
+//                [
+//                    'Category Discount', 'app\modules\shop\models\CategoryDiscount', 'OrderItem', '@app/modules/shop/views/backend-discount/_category_discount'
+//                ],
+//                [
+//                    'User Discount', 'app\modules\shop\models\UserDiscount', 'Order', '@app/modules/shop/views/backend-discount/_user_discount'
+//                ],
+//                [
+//                    'Order Discount', 'app\modules\shop\models\OrderDiscount', 'Order', '@app/modules/shop/views/backend-discount/_order_discount'
+//                ],
+//                [
+//                    'Product Discount', 'app\modules\shop\models\ProductDiscount', 'OrderItem', '@app/modules/shop/views/backend-discount/_product_discount'
+//                ],
+//            ]
+//        );
+//
+//        $this->batchInsert(
+//            SpecialPriceList::tableName(),
+//            [
+//                'object_id',
+//                'class',
+//                'sort_order',
+//                'type',
+//                'handler',
+//            ],
+//            [
+//                [
+//                    \app\models\Object::getForClass(\app\modules\shop\models\Product::className())->id,
+//                    'app\modules\shop\helpers\PriceHandlers',
+//                    5,
+//                    'core',
+//                    'getCurrencyPriceProduct',
+//                ],
+//                [
+//                    \app\models\Object::getForClass(\app\modules\shop\models\Order::className())->id,
+//                    'app\modules\shop\helpers\PriceHandlers',
+//                    10,
+//                    'delivery',
+//                    'getDeliveryPriceOrder',
+//                ],
+//                [
+//                    \app\models\Object::getForClass(\app\modules\shop\models\Product::className())->id,
+//                    'app\modules\shop\helpers\PriceHandlers',
+//                    15,
+//                    'discount',
+//                    'getDiscountPriceProduct',
+//                ],
+//                [
+//                    \app\models\Object::getForClass(\app\modules\shop\models\Order::className())->id,
+//                    'app\modules\shop\helpers\PriceHandlers',
+//                    20,
+//                    'discount',
+//                    'getDiscountPriceOrder',
+//                ],
+//
+//            ]
+//        );
+//        $this->insert(
+//            Object::tableName(),
+//            [
+//                'name' => 'Customer',
+//                'object_class' => 'app\modules\shop\models\Customer',
+//                'object_table_name' => 'customer',
+//                'column_properties_table_name' => 'customer_property',
+//                'eav_table_name' => 'customer_eav',
+//                'categories_table_name' => 'customer_category',
+//                'link_slug_category' => 'customer_category_slug',
+//                'link_slug_static_value' => 'customer_slug_static',
+//                'object_slug_attribute' => 'slug',
+//            ]
+//        );
+//        $this->insert(
+//            Object::tableName(),
+//            [
+//                'name' => 'Contragent',
+//                'object_class' => 'app\modules\shop\models\Contragent',
+//                'object_table_name' => 'contragent',
+//                'column_properties_table_name' => 'contragent_property',
+//                'eav_table_name' => 'contragent_eav',
+//                'categories_table_name' => 'contragent_category',
+//                'link_slug_category' => 'contragent_category_slug',
+//                'link_slug_static_value' => 'contragent_slug_static',
+//                'object_slug_attribute' => 'slug',
+//            ]
+//        );
+//        $this->insert(
+//            Object::tableName(),
+//            [
+//                'name' => 'OrderDeliveryInformation',
+//                'object_class' => 'app\modules\shop\models\OrderDeliveryInformation',
+//                'object_table_name' => 'order_delivery_information',
+//                'column_properties_table_name' => 'order_delivery_information_property',
+//                'eav_table_name' => 'order_delivery_information_eav',
+//                'categories_table_name' => 'order_delivery_information_category',
+//                'link_slug_category' => 'order_delivery_information_category_slug',
+//                'link_slug_static_value' => 'order_delivery_information_slug_static',
+//                'object_slug_attribute' => 'slug',
+//            ]
+//        );
+//        $this->insert(
+//            Events::tableName(),
+//            [
+//                'owner_class_name' => 'app\modules\shop\ShopModule',
+//                'event_name' => 'order_stage_customer',
+//                'event_class_name' => 'app\modules\shop\events\StageCustomer',
+//                'selector_prefix' => '',
+//                'event_description' => '',
+//                'documentation_link' => '',
+//            ]
+//        );
+//        $eventId = $this->db->lastInsertID;
+//        $this->insert(
+//            EventHandlers::tableName(),
+//            [
+//                'event_id' => $eventId,
+//                'sort_order' => 0,
+//                'handler_class_name' => 'app\modules\shop\helpers\BaseOrderStageHandlers',
+//                'handler_function_name' => 'handleStageCustomer',
+//                'is_active' => 1,
+//                'non_deletable' => 0,
+//                'triggering_type' => 'application_trigger',
+//            ]
+//        );
+//        $this->insert(
+//            Events::tableName(),
+//            [
+//                'owner_class_name' => 'app\modules\shop\ShopModule',
+//                'event_name' => 'order_stage_delivery',
+//                'event_class_name' => 'app\modules\shop\events\StageDelivery',
+//                'selector_prefix' => '',
+//                'event_description' => '',
+//                'documentation_link' => '',
+//            ]
+//        );
+//        $eventId = $this->db->lastInsertID;
+//        $this->insert(
+//            EventHandlers::tableName(),
+//            [
+//                'event_id' => $eventId,
+//                'sort_order' => 0,
+//                'handler_class_name' => 'app\modules\shop\helpers\BaseOrderStageHandlers',
+//                'handler_function_name' => 'handleStageDelivery',
+//                'is_active' => 1,
+//                'non_deletable' => 0,
+//                'triggering_type' => 'application_trigger',
+//            ]
+//        );
+//        $this->insert(
+//            Events::tableName(),
+//            [
+//                'owner_class_name' => 'app\modules\shop\ShopModule',
+//                'event_name' => 'order_stage_payment',
+//                'event_class_name' => 'app\modules\shop\events\StagePayment',
+//                'selector_prefix' => '',
+//                'event_description' => '',
+//                'documentation_link' => '',
+//            ]
+//        );
+//        $eventId = $this->db->lastInsertID;
+//        $this->insert(
+//            EventHandlers::tableName(),
+//            [
+//                'event_id' => $eventId,
+//                'sort_order' => 0,
+//                'handler_class_name' => 'app\modules\shop\helpers\BaseOrderStageHandlers',
+//                'handler_function_name' => 'handleStagePayment',
+//                'is_active' => 1,
+//                'non_deletable' => 0,
+//                'triggering_type' => 'application_trigger',
+//            ]
+//        );
+//        $this->insert(
+//            Events::tableName(),
+//            [
+//                'owner_class_name' => 'app\modules\shop\ShopModule',
+//                'event_name' => 'order_stage_payment_pay',
+//                'event_class_name' => 'app\modules\shop\events\StagePaymentPay',
+//                'selector_prefix' => '',
+//                'event_description' => '',
+//                'documentation_link' => '',
+//            ]
+//        );
+//        $eventId = $this->db->lastInsertID;
+//        $this->insert(
+//            EventHandlers::tableName(),
+//            [
+//                'event_id' => $eventId,
+//                'sort_order' => 0,
+//                'handler_class_name' => 'app\modules\shop\helpers\BaseOrderStageHandlers',
+//                'handler_function_name' => 'handleStagePaymentPay',
+//                'is_active' => 1,
+//                'non_deletable' => 0,
+//                'triggering_type' => 'application_trigger',
+//            ]
+//        );
+//        $this->insert(
+//            Events::tableName(),
+//            [
+//                'owner_class_name' => 'app\modules\shop\ShopModule',
+//                'event_name' => 'order_stageleaf_customer',
+//                'event_class_name' => 'app\modules\shop\events\StageLeafCustomer',
+//                'selector_prefix' => '',
+//                'event_description' => '',
+//                'documentation_link' => '',
+//            ]
+//        );
+//        $eventId = $this->db->lastInsertID;
+//        $this->insert(
+//            EventHandlers::tableName(),
+//            [
+//                'event_id' => $eventId,
+//                'sort_order' => 0,
+//                'handler_class_name' => 'app\modules\shop\helpers\BaseOrderStageHandlers',
+//                'handler_function_name' => 'handleCustomer',
+//                'is_active' => 1,
+//                'non_deletable' => 0,
+//                'triggering_type' => 'application_trigger',
+//            ]
+//        );
+//        $this->insert(
+//            Events::tableName(),
+//            [
+//                'owner_class_name' => 'app\modules\shop\ShopModule',
+//                'event_name' => 'order_stageleaf_payment_choose',
+//                'event_class_name' => 'app\modules\shop\events\StageLeafPayment',
+//                'selector_prefix' => '',
+//                'event_description' => '',
+//                'documentation_link' => '',
+//            ]
+//        );
+//        $eventId = $this->db->lastInsertID;
+//        $this->insert(
+//            EventHandlers::tableName(),
+//            [
+//                'event_id' => $eventId,
+//                'sort_order' => 0,
+//                'handler_class_name' => 'app\modules\shop\helpers\BaseOrderStageHandlers',
+//                'handler_function_name' => 'handlePayment',
+//                'is_active' => 1,
+//                'non_deletable' => 0,
+//                'triggering_type' => 'application_trigger',
+//            ]
+//        );
+//        $this->insert(
+//            Events::tableName(),
+//            [
+//                'owner_class_name' => 'app\modules\shop\ShopModule',
+//                'event_name' => 'order_stageleaf_delivery_choose',
+//                'event_class_name' => 'app\modules\shop\events\StageLeafDelivery',
+//                'selector_prefix' => '',
+//                'event_description' => '',
+//                'documentation_link' => '',
+//            ]
+//        );
+//        $eventId = $this->db->lastInsertID;
+//        $this->insert(
+//            EventHandlers::tableName(),
+//            [
+//                'event_id' => $eventId,
+//                'sort_order' => 0,
+//                'handler_class_name' => 'app\modules\shop\helpers\BaseOrderStageHandlers',
+//                'handler_function_name' => 'handleDelivery',
+//                'is_active' => 1,
+//                'non_deletable' => 0,
+//                'triggering_type' => 'application_trigger',
+//            ]
+//        );
+//        $this->insert(
+//            Events::tableName(),
+//            [
+//                'owner_class_name' => 'app\modules\shop\ShopModule',
+//                'event_name' => 'order_stageleaf_payment_pay',
+//                'event_class_name' => 'app\modules\shop\events\StageLeafPaymentPay',
+//                'selector_prefix' => '',
+//                'event_description' => '',
+//                'documentation_link' => '',
+//            ]
+//        );
+//        $eventId = $this->db->lastInsertID;
+//        $this->insert(
+//            EventHandlers::tableName(),
+//            [
+//                'event_id' => $eventId,
+//                'sort_order' => 0,
+//                'handler_class_name' => 'app\modules\shop\helpers\BaseOrderStageHandlers',
+//                'handler_function_name' => 'handlePaymentPay',
+//                'is_active' => 1,
+//                'non_deletable' => 0,
+//                'triggering_type' => 'application_trigger',
+//            ]
+//        );
+//        $this->insert(
+//            Events::tableName(),
+//            [
+//                'owner_class_name' => 'app\modules\shop\ShopModule',
+//                'event_name' => 'order_stageleaf_manager_process',
+//                'event_class_name' => 'app\modules\shop\events\StageLeafManagerProcess',
+//                'selector_prefix' => '',
+//                'event_description' => '',
+//                'documentation_link' => '',
+//            ]
+//        );
+//        $eventId = $this->db->lastInsertID;
+//        $this->insert(
+//            EventHandlers::tableName(),
+//            [
+//                'event_id' => $eventId,
+//                'sort_order' => 0,
+//                'handler_class_name' => 'app\modules\shop\helpers\BaseOrderStageHandlers',
+//                'handler_function_name' => 'handleManagerProcess',
+//                'is_active' => 1,
+//                'non_deletable' => 0,
+//                'triggering_type' => 'application_trigger',
+//            ]
+//        );
+//        $this->insert(
+//            Events::tableName(),
+//            [
+//                'owner_class_name' => 'app\modules\shop\ShopModule',
+//                'event_name' => 'order_calculate',
+//                'event_class_name' => 'app\modules\shop\events\OrderCalculateEvent',
+//                'selector_prefix' => '',
+//                'event_description' => '',
+//                'documentation_link' => '',
+//            ]
+//        );
+//        $eventId = $this->db->lastInsertID;
+//        $this->insert(
+//            EventHandlers::tableName(),
+//            [
+//                'event_id' => $eventId,
+//                'sort_order' => 0,
+//                'handler_class_name' => 'app\modules\shop\helpers\PriceHandlers',
+//                'handler_function_name' => 'handleSaveDiscounts',
+//                'is_active' => 1,
+//                'non_deletable' => 0,
+//                'triggering_type' => 'application_trigger',
+//            ]
+//        );
+//        $this->insert(
+//            EventHandlers::tableName(),
+//            [
+//                'event_id' => $eventId,
+//                'sort_order' => -5,
+//                'handler_class_name' => 'app\modules\shop\helpers\PriceHandlers',
+//                'handler_function_name' => 'handleSaveDelivery',
+//                'is_active' => 1,
+//                'non_deletable' => 0,
+//                'triggering_type' => 'application_trigger',
+//            ]
+//        );
+//        $this->insert(
+//            OrderStage::tableName(),
+//            [
+//                'name' => 'customer',
+//                'name_frontend' => Yii::t('app', 'Your information'),
+//                'name_short' => 'customer',
+//                'is_initial' => 1,
+//                'is_buyer_stage' => 1,
+//                'become_non_temporary' => 0,
+//                'is_in_cart' => 1,
+//                'immutable_by_user' => 0,
+//                'immutable_by_manager' => 0,
+//                'immutable_by_assigned' => 0,
+//                'reach_goal_ym' => '',
+//                'reach_goal_ga' => '',
+//                'event_name' => 'order_stage_customer',
+//                'view' => '@app/modules/shop/views/cart/stages/name.php',
+//            ]
+//        );
+//        $stageCustomer = $this->db->lastInsertID;
+//        $this->insert(
+//            OrderStage::tableName(),
+//            [
+//                'name' => 'delivery',
+//                'name_frontend' => Yii::t('app', 'Delivery'),
+//                'name_short' => 'delivery',
+//                'is_initial' => 0,
+//                'is_buyer_stage' => 1,
+//                'become_non_temporary' => 0,
+//                'is_in_cart' => 1,
+//                'immutable_by_user' => 0,
+//                'immutable_by_manager' => 0,
+//                'immutable_by_assigned' => 0,
+//                'reach_goal_ym' => '',
+//                'reach_goal_ga' => '',
+//                'event_name' => 'order_stage_delivery',
+//                'view' => '@app/modules/shop/views/cart/stages/delivery.php',
+//            ]
+//        );
+//        $stageDelivery = $this->db->lastInsertID;
+//        $this->insert(
+//            OrderStage::tableName(),
+//            [
+//                'name' => 'payment',
+//                'name_frontend' => Yii::t('app', 'Payment method selection'),
+//                'name_short' => 'payment',
+//                'is_initial' => 0,
+//                'is_buyer_stage' => 1,
+//                'become_non_temporary' => 0,
+//                'is_in_cart' => 1,
+//                'immutable_by_user' => 0,
+//                'immutable_by_manager' => 0,
+//                'immutable_by_assigned' => 0,
+//                'reach_goal_ym' => '',
+//                'reach_goal_ga' => '',
+//                'event_name' => 'order_stage_payment',
+//                'view' => '@app/modules/shop/views/cart/stages/payment.php',
+//            ]
+//        );
+//        $stagePayment = $this->db->lastInsertID;
+//        $this->insert(
+//            OrderStage::tableName(),
+//            [
+//                'name' => 'payment pay',
+//                'name_frontend' => Yii::t('app', 'Payment'),
+//                'name_short' => 'payment pay',
+//                'is_initial' => 0,
+//                'is_buyer_stage' => 0,
+//                'become_non_temporary' => 1,
+//                'is_in_cart' => 0,
+//                'immutable_by_user' => 0,
+//                'immutable_by_manager' => 0,
+//                'immutable_by_assigned' => 0,
+//                'reach_goal_ym' => '',
+//                'reach_goal_ga' => '',
+//                'event_name' => 'order_stage_payment_pay',
+//                'view' => '@app/modules/shop/views/cart/stages/pay.php',
+//            ]
+//        );
+//        $stagePaymentPay = $this->db->lastInsertID;
+//        $this->insert(
+//            OrderStageLeaf::tableName(),
+//            [
+//                'stage_from_id' => $stageCustomer,
+//                'stage_to_id' => $stageDelivery,
+//                'sort_order' => 0,
+//                'button_label' => Yii::t('app', 'Delivery method selection'),
+//                'button_css_class' => 'btn btn-primary',
+//                'notify_manager' => 0,
+//                'notify_new_assigned_user' => 0,
+//                'role_assignment_policy' => 'random',
+//                'event_name' => 'order_stageleaf_customer',
+//            ]
+//        );
+//        $this->insert(
+//            OrderStageLeaf::tableName(),
+//            [
+//                'stage_from_id' => $stageDelivery,
+//                'stage_to_id' => $stagePayment,
+//                'sort_order' => 0,
+//                'button_label' => Yii::t('app', 'Payment method selection'),
+//                'button_css_class' => 'btn btn-primary',
+//                'notify_manager' => 0,
+//                'notify_new_assigned_user' => 0,
+//                'role_assignment_policy' => 'random',
+//                'event_name' => 'order_stageleaf_delivery_choose',
+//            ]
+//        );
+//        $this->insert(
+//            OrderStageLeaf::tableName(),
+//            [
+//                'stage_from_id' => $stagePayment,
+//                'stage_to_id' => $stagePaymentPay,
+//                'sort_order' => 0,
+//                'button_label' => Yii::t('app', 'Go to payment'),
+//                'button_css_class' => 'btn btn-success',
+//                'notify_manager' => 1,
+//                'assign_to_user_id' => 0,
+//                'assign_to_role' => null,
+//                'notify_new_assigned_user' => 0,
+//                'role_assignment_policy' => 'random',
+//                'event_name' => 'order_stageleaf_payment_choose',
+//            ]
+//        );
+//        $this->insert(
+//            OrderStage::tableName(),
+//            [
+//                'name' => 'final',
+//                'name_frontend' => Yii::t('app', 'Order complete'),
+//                'name_short' => 'final',
+//                'is_initial' => 0,
+//                'is_buyer_stage' => 0,
+//                'become_non_temporary' => 0,
+//                'is_in_cart' => 0,
+//                'immutable_by_user' => 1,
+//                'immutable_by_manager' => 1,
+//                'immutable_by_assigned' => 1,
+//                'reach_goal_ym' => '',
+//                'reach_goal_ga' => '',
+//                'event_name' => 'order_stage_final',
+//                'view' => '',
+//            ]
+//        );
+//        $stage = $this->db->lastInsertID;
+//        $this->insert(
+//            OrderStageLeaf::tableName(),
+//            [
+//                'stage_from_id' => $stage,
+//                'stage_to_id' => $stagePaymentPay,
+//                'sort_order' => 0,
+//                'button_label' => Yii::t('app', 'Order complete'),
+//                'button_css_class' => 'btn btn-primary',
+//                'notify_manager' => 0,
+//                'notify_new_assigned_user' => 0,
+//                'role_assignment_policy' => 'random',
+//                'event_name' => 'order_stage_leaf_final',
+//            ]
+//        );
+//        $this->insert(
+//            Measure::tableName(),
+//            [
+//                'name' => Yii::t('app', 'Pieces'),
+//                'symbol' => Yii::t('app', 'pcs'),
+//                'nominal' => 1,
+//            ]
+//        );
         $this->batchInsert(
             Configurable::tableName(),
             ['module', 'sort_order', 'section_name', 'display_in_config'],
             [
                 ['core', '1', 'Core', '1'],
                 ['DefaultTheme', '2', 'Default Theme', '1'],
-                ['shop', '3', 'Shop', '1'],
-                ['user', '4', 'Users & Roles', '1'],
+    //                ['shop', '3', 'Shop', '1'],
+            ['user', '4', 'Users & Roles', '1'],
                 ['page', '5', 'Pages', '1'],
                 ['image', '6', 'Images', '1'],
                 ['seo', '7', 'SEO', '1'],
@@ -3738,14 +3736,14 @@ class m150531_084444_new_init extends Migration
                 'name' => Yii::t('app', 'Non main page'),
                 'by_url' => '/*',
             ],
-            [ // 3
-                'name' => Yii::t('app', 'Product listing'),
-                'by_route' => 'shop/product/list',
-            ],
-            [ // 4
-                'name' => Yii::t('app', 'Product page(show)'),
-                'by_route' => 'shop/product/show',
-            ],
+//            [ // 3
+//                'name' => Yii::t('app', 'Product listing'),
+//                'by_route' => 'shop/product/list',
+//            ],
+//            [ // 4
+//                'name' => Yii::t('app', 'Product page(show)'),
+//                'by_route' => 'shop/product/show',
+//            ],
             [ // 5
                 'name' => Yii::t('app', 'Content page listing'),
                 'by_route' => 'page/page/list',
@@ -3779,19 +3777,19 @@ class m150531_084444_new_init extends Migration
             ],
         ];
         $this->bulkInsert(ThemeActiveWidgets::tableName(), $activeWidgets);
-        $this->insert(
-            '{{%theme_widgets}}',
-            [
-                'name' => Yii::t('app', 'Categories list'),
-                'widget' => 'app\extensions\DefaultTheme\widgets\CategoriesList\Widget',
-                'configuration_model' => 'app\extensions\DefaultTheme\widgets\CategoriesList\ConfigurationModel',
-                'configuration_view' => '@app/extensions/DefaultTheme/widgets/CategoriesList/views/_config.php',
-                'configuration_json' => '{}',
-                'is_cacheable' => 0,
-                'cache_tags' => \app\modules\shop\models\Category::className(),
-            ]
-        );
-        $categoriesListWidgetId = $this->db->lastInsertID;
+//        $this->insert(
+//            '{{%theme_widgets}}',
+//            [
+//                'name' => Yii::t('app', 'Categories list'),
+//                'widget' => 'app\extensions\DefaultTheme\widgets\CategoriesList\Widget',
+//                'configuration_model' => 'app\extensions\DefaultTheme\widgets\CategoriesList\ConfigurationModel',
+//                'configuration_view' => '@app/extensions/DefaultTheme/widgets/CategoriesList/views/_config.php',
+//                'configuration_json' => '{}',
+//                'is_cacheable' => 0,
+//                'cache_tags' => \app\modules\shop\models\Category::className(),
+//            ]
+//        );
+//        $categoriesListWidgetId = $this->db->lastInsertID;
         $this->insert(
             ThemeWidgets::tableName(),
             [
@@ -3834,77 +3832,75 @@ class m150531_084444_new_init extends Migration
         );
         $contentBlock = $this->db->lastInsertID;
         $allBlocks = [
-            $categoriesListWidgetId,
             $filterSetsWidget,
             $pagesList,
             $contentBlock
         ];
-        foreach ($allBlocks as $widget_id) {
+        foreach ($allBlocks as $widget_id)
+        {
             // left sidebar
             $this->insert(
-                '{{%theme_widget_applying}}',
-                [
-                    'widget_id' => $widget_id,
-                    'part_id' => 5,
-                ]
+                    '{{%theme_widget_applying}}', [
+                'widget_id' => $widget_id,
+                'part_id' => 5,
+                    ]
             );
             // right sidebar
             $this->insert(
-                '{{%theme_widget_applying}}',
-                [
-                    'widget_id' => $widget_id,
-                    'part_id' => 8,
-                ]
+                    '{{%theme_widget_applying}}', [
+                'widget_id' => $widget_id,
+                'part_id' => 8,
+                    ]
             );
         }
-        $this->insert(
-            Events::tableName(),
-            [
-                'owner_class_name' => 'app\modules\shop\ShopModule',
-                'event_name' => 'order_stage_final',
-                'event_class_name' => 'app\modules\shop\events\StageFinal',
-                'selector_prefix' => '',
-                'event_description' => '',
-                'documentation_link' => '',
-            ]
-        );
-        $eventId = $this->db->lastInsertID;
-        $this->insert(
-            EventHandlers::tableName(),
-            [
-                'event_id' => $eventId,
-                'sort_order' => 0,
-                'handler_class_name' => 'app\modules\shop\helpers\BaseOrderStageHandlers',
-                'handler_function_name' => 'handleStageFinal',
-                'is_active' => 1,
-                'non_deletable' => 1,
-                'triggering_type' => 'application_trigger',
-            ]
-        );
-        $this->insert(
-            Events::tableName(),
-            [
-                'owner_class_name' => 'app\modules\shop\ShopModule',
-                'event_name' => 'order_stage_leaf_final',
-                'event_class_name' => 'app\modules\shop\events\StageLeafFinal',
-                'selector_prefix' => '',
-                'event_description' => '',
-                'documentation_link' => '',
-            ]
-        );
-        $eventId = $this->db->lastInsertID;
-        $this->insert(
-            EventHandlers::tableName(),
-            [
-                'event_id' => $eventId,
-                'sort_order' => 0,
-                'handler_class_name' => 'app\modules\shop\helpers\BaseOrderStageHandlers',
-                'handler_function_name' => 'handleFinal',
-                'is_active' => 1,
-                'non_deletable' => 1,
-                'triggering_type' => 'application_trigger',
-            ]
-        );
+//        $this->insert(
+//            Events::tableName(),
+//            [
+//                'owner_class_name' => 'app\modules\shop\ShopModule',
+//                'event_name' => 'order_stage_final',
+//                'event_class_name' => 'app\modules\shop\events\StageFinal',
+//                'selector_prefix' => '',
+//                'event_description' => '',
+//                'documentation_link' => '',
+//            ]
+//        );
+//        $eventId = $this->db->lastInsertID;
+//        $this->insert(
+//            EventHandlers::tableName(),
+//            [
+//                'event_id' => $eventId,
+//                'sort_order' => 0,
+//                'handler_class_name' => 'app\modules\shop\helpers\BaseOrderStageHandlers',
+//                'handler_function_name' => 'handleStageFinal',
+//                'is_active' => 1,
+//                'non_deletable' => 1,
+//                'triggering_type' => 'application_trigger',
+//            ]
+//        );
+//        $this->insert(
+//            Events::tableName(),
+//            [
+//                'owner_class_name' => 'app\modules\shop\ShopModule',
+//                'event_name' => 'order_stage_leaf_final',
+//                'event_class_name' => 'app\modules\shop\events\StageLeafFinal',
+//                'selector_prefix' => '',
+//                'event_description' => '',
+//                'documentation_link' => '',
+//            ]
+//        );
+//        $eventId = $this->db->lastInsertID;
+//        $this->insert(
+//            EventHandlers::tableName(),
+//            [
+//                'event_id' => $eventId,
+//                'sort_order' => 0,
+//                'handler_class_name' => 'app\modules\shop\helpers\BaseOrderStageHandlers',
+//                'handler_function_name' => 'handleFinal',
+//                'is_active' => 1,
+//                'non_deletable' => 1,
+//                'triggering_type' => 'application_trigger',
+//            ]
+//        );
         //
         $propertyHandler = PropertyHandler::findOne(
             [

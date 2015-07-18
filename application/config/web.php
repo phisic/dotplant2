@@ -11,7 +11,7 @@ $config = [
         'seo',
         'backend',
         'app\components\UserPreferencesBootstrap',
-        'shop',
+        //'shop',
         'DefaultTheme',
     ],
     'defaultRoute' => 'default',
@@ -20,9 +20,9 @@ $config = [
             'class' => 'app\modules\user\UserModule',
             'loginSessionDuration' => 2592000,
         ],
-        'shop' => [
-            'class' => 'app\modules\shop\ShopModule',
-        ],
+//        'shop' => [
+//            'class' => 'app\modules\shop\ShopModule',
+//        ],
         'page' => [
             'class' => 'app\modules\page\PageModule',
         ],
@@ -96,15 +96,15 @@ $config = [
                 'login' => 'user/user/login',
                 'logout' => 'user/user/logout',
                 'signup' => 'user/user/signup',
-                'cart/payment-result/<id:.+>' => 'cart/payment-result',
+//                'cart/payment-result/<id:.+>' => 'cart/payment-result',
                 'search' => 'default/search',
                 'robots.txt' => 'seo/manage/get-robots',
                 [
                     'class' => 'app\modules\page\components\PageRule',
                 ],
-                [
-                    'class' => 'app\components\ObjectRule',
-                ],
+//                [
+//                    'class' => 'app\components\ObjectRule',
+//                ],
                 'events-beacon' => 'core/events-beacon/index',
             ],
         ],

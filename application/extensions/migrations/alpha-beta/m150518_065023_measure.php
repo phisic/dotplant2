@@ -31,23 +31,23 @@ class m150518_065023_measure extends Migration
         $this->addColumn(Product::tableName(), 'measure_id', 'INT UNSIGNED NOT NULL');
         $this->update(Product::tableName(), ['measure_id' => $this->db->lastInsertID]);
         /** @var BackendMenu $menu */
-        $menu = BackendMenu::findOne(['name' => 'Shop']);
-        if (!is_null($menu)) {
-            $this->insert(
-                BackendMenu::tableName(),
-                [
-                    'parent_id' => $menu->id,
-                    'name' => 'Measures',
-                    'route' => '/shop/backend-measure/index',
-                    'icon' => 'calculator',
-                    'sort_order' => '9',
-                    'added_by_ext' => 'core',
-                    'rbac_check' => 'shop manage',
-                    'css_class' => '',
-                    'translation_category' => 'app',
-                ]
-            );
-        }
+//        $menu = BackendMenu::findOne(['name' => 'Shop']);
+//        if (!is_null($menu)) {
+//            $this->insert(
+//                BackendMenu::tableName(),
+//                [
+//                    'parent_id' => $menu->id,
+//                    'name' => 'Measures',
+//                    'route' => '/shop/backend-measure/index',
+//                    'icon' => 'calculator',
+//                    'sort_order' => '9',
+//                    'added_by_ext' => 'core',
+//                    'rbac_check' => 'shop manage',
+//                    'css_class' => '',
+//                    'translation_category' => 'app',
+//                ]
+//            );
+//        }
     }
 
     public function down()

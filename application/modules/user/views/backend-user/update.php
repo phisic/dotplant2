@@ -77,9 +77,9 @@ $this->params['breadcrumbs'] = [
             <?= $form->field($model, 'password')->textInput(['maxlength' => 255]) ?>
             <?= $form->field($model, 'status')->dropDownList($model->getStatuses()) ?>
             <?= $form->field($model, 'email')->textInput(['maxlength' => 255]) ?>
-            <?= $form->field($model, 'first_name')->textInput(['maxlength' => 255]) ?>
-            <?= $form->field($model, 'last_name')->textInput(['maxlength' => 255]) ?>
-            <?=
+    <?=$form->field($model, 'name')->textInput(['maxlength' => 255])?>
+    <?=$form->field($model, 'offname')->textInput(['maxlength' => 255])?>
+    <?=
                 app\widgets\MultiSelect::widget([
                     'items' => \yii\helpers\ArrayHelper::map(
                         \Yii::$app->getAuthManager()->getRoles(),

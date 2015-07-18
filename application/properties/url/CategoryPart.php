@@ -30,7 +30,8 @@ abstract class CategoryPart extends UrlPart
         /** @var Category $root_category */
         $root_category = null;
         if ($this->include_root_category === false) {
-
+     echo $ttee;
+            exit;
             $root_category = Category::findRootForCategoryGroup($this->category_group_id);
             if (is_object($root_category)) {
                 $root_id = $root_category->id;
