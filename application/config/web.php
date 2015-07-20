@@ -16,6 +16,9 @@ $config = [
     ],
     'defaultRoute' => 'default',
     'modules' => [
+        'tour' => [
+            'class' => 'app\modules\tour\TourModule',
+        ],
         'user' => [
             'class' => 'app\modules\user\UserModule',
             'loginSessionDuration' => 2592000,
@@ -96,15 +99,12 @@ $config = [
                 'login' => 'user/user/login',
                 'logout' => 'user/user/logout',
                 'signup' => 'user/user/signup',
-//                'cart/payment-result/<id:.+>' => 'cart/payment-result',
                 'search' => 'default/search',
+                'hotel' => 'tour/hotel/index',
                 'robots.txt' => 'seo/manage/get-robots',
                 [
                     'class' => 'app\modules\page\components\PageRule',
                 ],
-//                [
-//                    'class' => 'app\components\ObjectRule',
-//                ],
                 'events-beacon' => 'core/events-beacon/index',
             ],
         ],

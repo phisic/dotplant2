@@ -5,7 +5,6 @@ use yii\helpers\Url;
 use kartik\icons\Icon;
 /** @var yii\web\View $this */
 /**
- * @var \app\modules\shop\models\Order $order
  */
 /** @var bool $collapseOnSmallScreen */
 /** @var bool $useFontAwesome */
@@ -65,28 +64,14 @@ $navStyles = '';
             <?php else: ?>
                 <?= Yii::t('app', 'Hi') ?>,
                 <span class="dropdown">
-                    <a href="<?= \yii\helpers\Url::toRoute(['/shop/cabinet']) ?>" class="link-cabinet" data-toggle="dropdown" data-hover="dropdown"><?= Html::encode(Yii::$app->user->identity->username) ?></a>!
-                    <?= \yii\widgets\Menu::widget([
+                            <a href="<?=\yii\helpers\Url::toRoute(['user/user/profile'])?>" class="link-cabinet" data-toggle="dropdown" data-hover="dropdown"><?=Html::encode(Yii::$app->user->identity->username)?></a>!
+                        <?= \yii\widgets\Menu::widget([
                         'items' => [
                             [
                                 'label' => Yii::t('app', 'User profile'),
                                 'url' => ['/user/user/profile'],
                                 [
                                     'class' => 'user-profile-link',
-                                ]
-                            ],
-                            [
-                                'label' => Yii::t('app', 'Personal cabinet'),
-                                'url' => ['/shop/cabinet'],
-                                [
-                                    'class' => 'shop-cabinet-link',
-                                ]
-                            ],
-                            [
-                                'label' => Yii::t('app', 'Orders list'),
-                                'url' => ['/shop/orders/list'],
-                                [
-                                    'class' => 'shop-orders-list',
                                 ]
                             ],
                             [
@@ -103,19 +88,8 @@ $navStyles = '';
                         ],
                     ]) ?>
                 </span>
-            <?php endif; ?>
-            
-            <a href="<?= \yii\helpers\Url::toRoute(['/shop/cart']) ?>" class="btn btn-show-cart">
-                <i class="fa fa-shopping-cart cart-icon"></i>
-                <span class="badge items-count">
-                    <?= $itemsCount ?>
-                </span>
-            </a>
-            <?php if (is_array(Yii::$app->session->get('comparisonProductList')) && count(Yii::$app->session->get('comparisonProductList')) > 0): ?>
-                <a href="<?=Url::to(['/shop/product-compare/compare'])?>" class="btn btn-compare" title="<?=Yii::t('app', 'Compare products')?>">
-                    <?= Icon::show('tags') ?> <?=count(Yii::$app->session->get('comparisonProductList'))?>
-                </a>
-            <?php endif; ?>
+                <?php endif;?>
+
         </div>
         <div class="pull-right search-area">
 

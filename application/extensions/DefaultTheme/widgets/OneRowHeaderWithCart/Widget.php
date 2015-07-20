@@ -6,6 +6,7 @@ use Yii;
 use app\extensions\DefaultTheme\assets\BootstrapHoverDropdown;
 use app\extensions\DefaultTheme\components\BaseWidget;
 use yii\helpers\ArrayHelper;
+use \app\modules\tour\models\Country;
 
 class Widget extends BaseWidget
 {
@@ -19,12 +20,11 @@ class Widget extends BaseWidget
     {
         // this header needs this plugin
         BootstrapHoverDropdown::register($this->view);
-
+        
         return $this->render(
             'header',
             [
-                'order' => array(),
-                    'collapseOnSmallScreen' => $this->collapseOnSmallScreen,
+                'collapseOnSmallScreen' => $this->collapseOnSmallScreen,
             ]
         );
     }
