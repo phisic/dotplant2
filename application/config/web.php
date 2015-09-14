@@ -100,7 +100,6 @@ $config = [
                 'logout' => 'user/user/logout',
                 'signup' => 'user/user/signup',
                 'search' => 'default/search',
-                'hotel' => 'tour/hotel/index',
                 'robots.txt' => 'seo/manage/get-robots',
                 [
                     'class' => 'app\modules\page\components\PageRule',

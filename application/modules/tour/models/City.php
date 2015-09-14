@@ -42,7 +42,7 @@ class City extends ActiveRecord
                 where ps.WSERVICETYPE_ID=1 and p.WCOUNTRY_ID=1 group by ci.ID order by ci.NAME; ';
         $list = [];
         foreach (self::findBySql($q)->asArray()->all() as $item)
-            $list[] = ['label' => $item['NAME'] . ' (' . $item['COUNT'] . ')', 'url' => \yii\helpers\Url::toRoute(['hotel/index', 'city' => $item['ID']])];
+            $list[] = ['label' => $item['NAME'] . ' (' . $item['COUNT'] . ')', 'url' => \yii\helpers\Url::toRoute(['/tour/hotel', 'city' => $item['ID']])];
         return $list;
     }
 

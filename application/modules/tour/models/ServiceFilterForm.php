@@ -5,7 +5,7 @@ namespace app\modules\tour\models;
 use Yii;
 use yii\base\Model;
 
-class FilterForm extends Model
+class ServiceFilterForm extends Model
 {
 
     public $keyword;
@@ -15,7 +15,7 @@ class FilterForm extends Model
     {
         return [
             'city_id' => Yii::t('app', 'City'),
-            'keyword' => Yii::t('app', 'Hotel, City or Region'),
+            'keyword' => Yii::t('app', 'Visa, Transfer, excursion and etc'),
         ];
     }
 

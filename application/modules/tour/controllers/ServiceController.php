@@ -8,7 +8,7 @@ use yii\data\Pagination;
 use app\modules\tour\models\Partner;
 use yii\data\ActiveDataProvider;
 
-class HotelController extends Controller
+class ServiceController extends Controller
 {
     /**
      * @param $id
@@ -21,14 +21,9 @@ class HotelController extends Controller
         $q = Partner::find()
                 ->join('JOIN', 'WPARTNERSERVICE', 'WPARTNERSERVICE.WPARTNER_ID = wpartner.id')
                 ->join('JOIN', 'WSERVICELIST', 'WSERVICELIST.ID = WPARTNERSERVICE.WSERVICELIST_ID')
-                ->where(['WPARTNERSERVICE.WSERVICETYPE_ID' => 1])
+                ->where(['>', 'WPARTNERSERVICE.WSERVICETYPE_ID', 1])
                 ->groupBy(['wpartner.id'])
-                ->with('hotels');
-
-        if ($city = (int)Yii::$app->request->get('city'))
-        {
-            $q->andWhere(['wcity_id' => $city]);
-        }
+                ->with('services');
 
         $provider = new ActiveDataProvider([
             'query' => $q,
@@ -36,7 +31,7 @@ class HotelController extends Controller
                 'pageSize' => 10,
             ],
         ]);
-        return $this->render('hotelList', ['provider' => $provider]);
+        return $this->render('serviceList', ['provider' => $provider]);
     }
 
     

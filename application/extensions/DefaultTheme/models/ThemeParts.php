@@ -172,7 +172,6 @@ class ThemeParts extends \yii\db\ActiveRecord
             []
         );
         ArrayHelper::multisort($widgets, 'sort_order');
-
         $result = array_reduce(
             $widgets,
             function($carry, ThemeActiveWidgets $activeWidget) use ($model, $params) {

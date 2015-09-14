@@ -6,11 +6,11 @@ use Yii;
 use yii\data\ActiveDataProvider;
 use yii\db\ActiveRecord;
 
-class ServiceClass extends ActiveRecord
+class ServiceList extends ActiveRecord
 {
     public static function tableName()
     {
-        return '{{%WSERVICECLASS}}';
+        return '{{%WSERVICELIST}}';
     }
 
     /**

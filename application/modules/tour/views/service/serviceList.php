@@ -11,16 +11,16 @@ use kartik\icons\Icon;
 use yii\helpers\Html;
 use yii\widgets\ListView;
 
-$this->params['breadcrumbs'] = [['label' => 'Hotels']];
-echo Html::tag('h1', Html::encode('Hotels'));
+$this->params['breadcrumbs'] = [['label' => 'Services']];
+echo Html::tag('h1', Html::encode('Services'));
 ?>
 <div class="container-fluid">
     <div class="row">
         <?=
             ListView::widget([
-            'dataProvider' => $provider,
-            'itemView' => '_hotelView',
-            'itemOptions' => ['tag' => false],
+                'dataProvider' => $provider,
+                'itemView' => '_serviceView',
+                'itemOptions' => ['tag' => false],
             ]);
         ?>
         </div>

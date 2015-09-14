@@ -1336,6 +1336,7 @@ class m150531_084444_new_init extends Migration
                 'width' => 'INT UNSIGNED NOT NULL',
                 'height' => 'INT UNSIGNED NOT NULL',
                 'default_watermark_id' => 'INT UNSIGNED NULL',
+				'quality'=> 'TINYINT(1) UNSIGNED NOT NULL DEFAULT 90',
                 'resize_mode' => 'ENUM(\'' . ManipulatorInterface::THUMBNAIL_INSET . '\',\'' . ManipulatorInterface::THUMBNAIL_OUTBOUND . '\') DEFAULT \'' . ManipulatorInterface::THUMBNAIL_INSET . '\'',
             ],
             $tableOptions

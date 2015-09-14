@@ -3,7 +3,8 @@
 namespace app\extensions\DefaultTheme\widgets\TourFilter;
 
 use app\extensions\DefaultTheme\components\BaseWidget;
-use app\modules\tour\models\FilterForm;
+use app\modules\tour\models\ServiceFilterForm;
+use app\modules\tour\models\HotelFilterForm;
 use app\modules\tour\models\City;
 use yii\helpers\Html;
 use Yii;
@@ -25,9 +26,13 @@ class Widget extends BaseWidget
 
     public function renderFilter()
     {
-        $model = new FilterForm();
+        $tab = Yii::$app->controller->id;
+        if ($tab == 'service')
+            $model = new ServiceFilterForm();
+        else
+            $model = new HotelFilterForm();
         $model->load(Yii::$app->request->post());
-        return $this->render('filterForm', ['model' => $model]);
+        return $this->render('filterForm', ['model' => $model, 'activeTab' => $tab]);
     }
 
 }
